@@ -1,10 +1,5 @@
 <template>
     <div class="footer">
-        <div class="footer-container">
-            <div >
-                <img class="footer-title" src="../assets/logo.png" />
-            </div>
-        </div>
         <div class="footer-pay">
             <span>Payment Methods Partner:</span>
             <img width="15px" class="payway" src="../assets/alipay.png" />
@@ -42,7 +37,7 @@ export default {
     height: 30px;
     line-height: 30px;
     color: white;
-    background-color:#ff5a5b;
+    background-color:rgb(12, 39, 60);
     font-size: 6px;
     text-align: center;
 }
