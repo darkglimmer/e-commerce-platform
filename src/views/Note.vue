@@ -16,9 +16,9 @@ export default {
     data() {
         return {
             notes: [{
-                name: 'ACR System - 15mm Rods Adapter',
-                description: "Here's the story of a man.",
-                price: 12.00,
+                name: '家用可爱柔软章鱼公仔',
+                description: "拿来垫屁股可带劲儿了",
+                price: 12.99,
                 productID: 1,
             }]
         }
