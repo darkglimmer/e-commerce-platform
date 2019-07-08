@@ -48,9 +48,6 @@ export default {
 }
 .footer{
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 }
 .payway{
     margin-left: 20px;
