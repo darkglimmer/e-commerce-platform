@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="login">
         <div class="login-img">
             <img style="width: 320px" src="../assets/regimg.png" />
@@ -15,12 +16,20 @@
             <div class="login-tips">I have not registed yet, click to <span class="register">register</span></div>
         </div>
     </div>
+    <div class="login-foot">
+        <Footer />
+    </div>
+</div>
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue'
 
 export default {
-  name: 'Login'
+  name: 'Login',
+  components: {
+    Footer
+  }
 }
 </script>
 
@@ -66,9 +75,15 @@ export default {
     color: #ff5a5b;
     font-weight: bold;
 }
+.login-foot{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 </style>
 <style>
 .el-input__inner{
-    border-radius: 50px;
+    border-radius: 50px !important;
 }
+
 </style>

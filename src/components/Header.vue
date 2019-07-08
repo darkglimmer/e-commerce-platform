@@ -3,7 +3,7 @@
         <div class="header-container">
             <el-menu class="el-menu-demo menu" background-color="rgb(12, 39, 60)" active-text-color="#ff5a5b" text-color="#fff" mode="horizontal" @select="handleSelect">
                 <el-submenu index="1">
-                    <template slot="title">CATEGOIES</template>
+                    <template  slot="title">CATEGOIES</template>
                     <el-menu-item index="1-1">选项1</el-menu-item>
                     <el-menu-item index="1-2">选项2</el-menu-item>
                     <el-menu-item index="1-3">选项3</el-menu-item>
