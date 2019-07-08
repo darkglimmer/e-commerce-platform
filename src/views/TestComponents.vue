@@ -1,16 +1,14 @@
 <template>
-    <div>
-        <Note></Note>
-    </div>
+    <Note></Note>
 </template>
 
 <script>
 import Note from '@/components/Note.vue'
 
 export default {
-    name: 'TestCompoents',
-    compoents: {
+    name: 'note',
+    components: {
         Note
-    }
+    },
 }
 </script>

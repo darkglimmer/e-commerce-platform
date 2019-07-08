@@ -21,7 +21,7 @@ export default new Router({
     },
     {
       path: '/testcomponents',
-      name: 'Test',
+      name: 'TestCompoents',
       component: TestComponents
     }
   ]
