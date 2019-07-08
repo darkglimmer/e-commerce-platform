@@ -6,13 +6,13 @@
         <div class="block"></div>
         <div class="info">
             <div class="title">
-                <span style="font-weight: bold;">ACR System - 15mm Rods Adapter</span>
+                <span style="font-weight: bold;">{{this.name}}</span>
             </div>
             <div class="description">
-                <a>Here's the story of a man.</a>
+                <a>{{this.description}}</a>
             </div>
             <div class="price">
-                <span style="display: inline-block; font-size: 23px; color: Red; font-weight: bold;">$ 12.00</span>
+                <span style="display: inline-block; font-size: 23px; color: Red; font-weight: bold;">$ {{this.price}}</span>
                 <a style="display: inline-block; font-size: 17px; font-weight: bold;">/ $ 09.00</a> 
             </div>
             <div class="addToCart">
@@ -28,6 +28,12 @@
 <script>
 export default {
   name: 'note',
+  props: {
+    name: String,
+    description: String,
+    price: Number,
+    productID: Number,
+  },
   data () {
     return {
     }
