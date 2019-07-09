@@ -1,9 +1,6 @@
 <template>
-<div>
+<div class="background">
     <div class="login">
-        <div class="login-img">
-            <img style="width: 400px" src="../assets/sky.jpg" />
-        </div>
         <div class="login-card">
             <div class="login-card-title">Welcome to register</div>
             <el-form>
@@ -71,14 +68,12 @@ export default {
 </script>
 
 <style scoped>
+.background{
+    padding-top: 100px;
+}
 .login{
     width: 900px;
     margin: 0 auto;
-    margin-top:150px;
-}
-.login-img{
-    display: inline-block;
-    border-radius: 50px;
 }
 .login-card-title {
     text-align: center;
@@ -88,9 +83,8 @@ export default {
     margin-bottom: 30px;
 }
 .login-card{
-    display: inline-block;
     width: 350px;
-    margin-left: 100px;
+    margin: 0 auto;
 }
 .login-button{
     width: 350px;
@@ -107,14 +101,14 @@ export default {
     font-size: 14px;
     color: #555555;
     width: 300px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .register{
     color: #ff5a5b;
     font-weight: bold;
 }
 .login-foot{
-    margin-top: 100px;
+    margin-top: 80px;
     width: 100%;
 }
 </style>

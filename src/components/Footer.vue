@@ -1,5 +1,8 @@
 <template>
     <div class="footer">
+        <div class="footer-logo">
+            <img width="100px" src="../assets/logo.png" />
+        </div>
         <div class="footer-pay">
             <span>Payment Methods Partner:</span>
             <img width="15px" class="payway" src="../assets/alipay.png" />
@@ -29,6 +32,11 @@ export default {
     background-color:rgb(12, 39, 60);
     text-align: center;
 }
+.footer-logo{
+    background-color:rgb(12, 39, 60);
+    padding: 10px;
+    text-align: center;
+}
 .footer-title{
     width: 100px;
     margin-top: 20px;
@@ -37,7 +45,7 @@ export default {
     height: 30px;
     line-height: 30px;
     color: white;
-    background-color:rgb(12, 39, 60);
+    background-color: #ff5a5b;
     font-size: 6px;
     text-align: center;
 }

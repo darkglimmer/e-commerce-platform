@@ -1,7 +1,7 @@
 <template>
     <div class="note">
         <div class="image">
-            <img style="height: 290px; width: 290px;" src="../assets/img.png">
+            <!-- <img style="height: 290px; width: 290px;" src="../assets/img.png"> -->
         </div>
         <div class="block"></div>
         <div class="info">

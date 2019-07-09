@@ -26,6 +26,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  overflow: scroll;
+  background-color: #f5f5f5;
+  /* overflow: scroll; */
 }
 </style>

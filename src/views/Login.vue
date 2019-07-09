@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="background">
     <div class="login">
         <div class="login-img">
             <img style="width: 320px" src="../assets/regimg.png" />
@@ -22,7 +22,7 @@
 
 <script>
 import Footer from '@/components/Footer.vue'
-// import Cookie from '@/components/Footer.vue'
+// import Cookie from '@/cookie.js'
 
 export default {
   name: 'Login',
@@ -48,7 +48,6 @@ export default {
             method: 'POST',
             headers: {
               "Content-Type":"application/json",
-            //   'Accept': 'application/json'
             },
             body: JSON.stringify(data)
           }).then(res => {
@@ -57,8 +56,8 @@ export default {
               return res
             }
           }).then(res => {
-            // cookie.setCookie('userId', res.user_id);
-            // this.$router.push('/');
+            cookie.setCookie('userId', res.id);
+            this.$router.push('/');
           })
       }
   }
@@ -66,10 +65,13 @@ export default {
 </script>
 
 <style scoped>
+.background{
+    padding: 240px 0;
+    
+}
 .login{
-    width: 730px;
+    width: 800px;
     margin: 0 auto;
-    margin-top:250px;
 }
 .login-img{
     display: inline-block;
@@ -84,7 +86,7 @@ export default {
 .login-card{
     display: inline-block;
     width: 250px;
-    margin-left: 100px;
+    margin-left: 150px;
 }
 .login-button{
     width: 250px;
