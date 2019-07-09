@@ -1,7 +1,7 @@
 <template>
     <div class="note">
         <div class="image">
-            <!-- <img style="height: 290px; width: 290px;" src="../assets/img.png"> -->
+            <img style="height: 290px; width: 290px;" src="../assets/product.png">
         </div>
         <div class="block"></div>
         <div class="info">
@@ -12,8 +12,8 @@
                 <a>{{this.description}}</a>
             </div>
             <div class="price">
-                <span style="display: inline-block; font-size: 23px; color: Red; font-weight: bold;">$ {{this.price}}</span>
-                <a style="display: inline-block; font-size: 17px; font-weight: bold;">/ $ 09.00</a> 
+                <span style="display: inline-block; font-size: 25px; color: Red; font-weight: bold;">$ {{this.price-1}}</span>
+                <a style="display: inline-block; font-size: 17px; font-weight: bold;">/ $ {{this.price}}</a> 
             </div>
             <div class="addToCart">
                 <button style="margin-left: 10px; border: none; outline: none; background-color: white; width: 260px;">
@@ -75,10 +75,11 @@ export default {
     margin-left: 20px;
 }
 .addToCart{
-    margin-top: 20px;
+    margin-top: 18px;
     outline: 2px;
 }
 .block{
-    height: 50px;
+    height: 40px;
+    color: rgba(red, green, blue, 0)
 }
 </style>
