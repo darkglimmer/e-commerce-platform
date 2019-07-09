@@ -24,7 +24,7 @@ export default {
     width: 180px;
     height: 40px;
     line-height: 40px;
-    border: 2px #526574 dashed;
+    /* border: 2px #526574 dashed; */
 }
 .category{
     font-size: 18px;

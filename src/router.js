@@ -5,6 +5,7 @@ import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import TestNote from './views/Note.vue'
 import TestDetail from './views/Detail.vue'
+import ShoppingCart from './views/Shop.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -35,6 +36,11 @@ export default new Router({
       path: '/product/:id/detail',
       name: 'TestDetail',
       component: TestDetail
+    },
+    {
+      path: '/shoppingCart',
+      name: 'shoppingCart',
+      component: ShoppingCart
     }
   ]
 })

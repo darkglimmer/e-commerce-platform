@@ -1,9 +1,7 @@
 <template>
     <div class="header">
-        <!-- <img class="login-logo" width="100px" src="@/assets/logo.png" /> -->
         <div class="header-container">
             <el-menu class="el-menu-demo menu" background-color="rgb(12, 39, 60)" active-text-color="#ff5a5b" text-color="#fff" mode="horizontal" @select="handleSelect">
-                <!-- <el-menu-item class="title" index="1">CATEGOIES</el-menu-item> -->
                 <span class="title">
                     <img style="margin-right:10px;" src="../assets/Forma.png" />
                     CATEGOIES
@@ -11,6 +9,7 @@
                 <el-menu-item index="1">HOME</el-menu-item>
                 <el-menu-item index="2">SHOP</el-menu-item>
                 <el-menu-item index="3">ABOUT US</el-menu-item>
+                <span class="header-login">LOGIN IN</span>
             </el-menu>
         </div>
     </div>
@@ -29,6 +28,9 @@ export default {
           if(key == 1){
               this.$router.push("/");
           }
+          if(key == 2){
+              this.$router.push("/shoppingCart");
+          }
       }
   }
 }
@@ -46,22 +48,31 @@ export default {
 }
 .title{
     background-color: #ff5a5b;
-    width: 200px;
+    width: 250px;
     float: left;
     text-align: center;
     color: white;
 }
 .header-container{
-    width: 800px;
-    margin: 0 auto;
+    margin-left: 130px;
+    width: 1280px;
 }
 .menu{
     font-weight: bold;
 }
+.header-login{
+    float: right;
+    margin-right: 30px;
+    color: white;
+}
 </style>
 <style>
 .el-menu-item{
-    width: 200px;
+    width: 250px;
     text-align: center;
+    border: 0;
+}
+.el-menu{
+    height: 60px;
 }
 </style>

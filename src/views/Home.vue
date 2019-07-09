@@ -108,9 +108,10 @@ export default {
     margin-top:30px;
     background-color: rgb(12, 39, 60);
     height: 245px;
-    padding: 0 80px;
   }
   .home-card{
+    width: 1280px;
+    margin: 0 auto;
     color: white;
     font-weight: bold;
   }
