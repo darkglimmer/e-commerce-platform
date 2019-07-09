@@ -1,11 +1,11 @@
 <template>
     <div class="card-productNote">
       <div class="card-img">
-        <img src="../assets/product.png" style="height: 400px; width: 400px;">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3196541190,1207059702&fm=26&gp=0.jpg" style="height: 400px; width: 400px;">
       </div>
       <div class="card-information">
         <div class="card-title">
-          <span style="font-size: 28px; font-weight: bold;">可爱柔软爆款章鱼公仔</span>
+          <span style="font-size: 28px; font-weight: bold;">JOJO的奇妙冒险 阿帕茶意大利独家</span>
           <el-rate
             v-model="value5"
             disabled
@@ -18,11 +18,11 @@
         <hr width=100% size=2 color=#B0B0B0 style="filter:progid:DXImageTransform.Microsoft.Glow(color=#B0B0B0); margin-top: 10px;"> 
         <div class="card-description"> 
           <p style="font-size: 18px; line-height: 25px;">
-            <i>&nbsp; &nbsp;22" class screen full LED TV</i>
+            <i>&nbsp; &nbsp;茸茸同款推荐！水母超爱喝！</i>
             <br>
-            <i>Hight precision lens provides a clearer picture and better view.</i>
+            <i>味道浓郁，回味芳香！</i>
             <br>
-            <i>With stand: 50.23W x 30.1H x 15.5D</i>
+            <i>本产品由 雷欧 阿帕奇 独家制造。警署专供。</i>
             <br>
           </p>
         </div>
@@ -32,7 +32,7 @@
           <img src="../assets/share.png" style="margin-left: 40px;">
         </div>
         <div class="card-statement">
-          <span>在本购物广场购买的物品，若有质量问题。概不负责～</span>
+          <span>若引用后引起不是。概不负责～</span>
         </div>
       </div>
       <div class="card-shopping">
@@ -47,9 +47,9 @@
             </el-button>
         </div>
         <div class="card-price">
-          <span style="font-size: 30px; font-weight: bold; color: red;">$ {{this.num1*229.00}}</span>
+          <span style="font-size: 30px; font-weight: bold; color: red;">$ {{this.num1*999.99}}</span>
           <br>
-          <span style="text-decoration: line-through; font-size: 22px; line-height: 25px; color: #707070">$ {{this.num1*230.00}}</span>
+          <span style="text-decoration: line-through; font-size: 22px; line-height: 25px; color: #707070">$ {{this.num1*1000.00}}</span>
         </div>
         <div class="card-quantity">
           <span style="font-size: 15px; font-weight: bold;">数量:</span>
@@ -83,6 +83,7 @@ export default {
   height: 400px;
   vertical-align: top;
   vertical-align: bottom;
+  margin: 300;
 }
 .card-img{
   display: inline-block;

@@ -1,12 +1,47 @@
 <template>
   <div class="home">
-    <Classify :category="this.category" />
-    <div class="banner">
-      <el-carousel height="450px">
-        <el-carousel-item v-for="item in imgList" :key="item">
-          <img :src="item.url" />
-        </el-carousel-item>
-      </el-carousel>
+    <div class="category-and-banner">
+      <div class="category-list">
+        <div class="el-submenu__title">
+        <el-menu
+              default-active="2"
+              class="el-menu-vertical-demo"
+              @open="handleOpen"
+              @close="handleClose"
+              background-color="#545c64"
+              text-color="#fff"
+              active-text-color="#ffd04b">
+              <el-submenu index="1">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">家用器具 >></span></template>
+              </el-submenu>
+              <el-submenu index="1">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">电子产品 >></span></template>
+              </el-submenu>
+              <el-submenu index="1">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">户外必备 >></span></template>
+              </el-submenu>
+              <el-submenu index="1">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">当下最IN >></span></template>
+              </el-submenu>
+              <el-submenu index="1">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">海外放心 >></span></template>
+              </el-submenu>
+              <el-submenu index="1">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">出行穿搭 >></span></template>
+              </el-submenu>
+              <el-submenu index="1">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">点心零食 >></span></template>
+              </el-submenu>
+            </el-menu>
+        </div>
+      </div>
+      <div class="banner">
+        <el-carousel height="450px">
+          <el-carousel-item v-for="item in imgList" :key="item">
+            <img :src="item.url" />
+          </el-carousel-item>
+        </el-carousel>
+      </div>  
     </div>
     <div class="product-title">
       <img src="../assets/header.png" />
@@ -83,7 +118,7 @@ export default {
           { url:require( "../assets/banner2.jpg") },
           { url:require( "../assets/banner3.jpg") }
         ],
-        category: "adfsdf",
+        category: "Daily Life Life Life",
         active: 1,
         notes: [
           {
@@ -139,10 +174,13 @@ export default {
   }
   .banner{
     /* margin-left: 500px; */
+    display: inline-block;
+    margin-left: 350px;
+    margin-top: 100px;
     width:800px;
   }
   .middle{
-    margin-top:30px;
+    margin-top:100px;
     background-color: rgb(12, 39, 60);
     height: 245px;
   }
@@ -167,7 +205,7 @@ export default {
     display: inline-block;
     vertical-align: middle;
     width: 220px;
-    padding:32px 20px;
+    padding:40px 20px;
     text-align: center;
   }
   .product-title{
@@ -182,5 +220,18 @@ export default {
     display: inline-block;
     vertical-align: middle;
     margin-left:30px; 
+  }
+  .category-list{
+    display: inline-block;
+    margin-left: 200px;
+    margin-top: 45px;
+    vertical-align: top;
+  }
+  .category-and-banner{
+    vertical-align: top;
+  }
+  .el-submenu__title{
+    width: 270px !important;
+    height: 80px !important;
   }
 </style>
