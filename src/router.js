@@ -26,7 +26,7 @@ export default new Router({
       component: TestNote
     },
     {
-      path: '/testcomponent/detail',
+      path: '/product/:id/detail',
       name: 'TestDetail',
       component: TestDetail
     }

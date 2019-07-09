@@ -12,8 +12,8 @@
                 <a>{{this.description}}</a>
             </div>
             <div class="price">
-                <span style="display: inline-block; font-size: 25px; color: Red; font-weight: bold;">$ {{this.price}}</span>
-                <a style="display: inline-block; font-size: 17px; font-weight: bold;">/ $ 09.00</a> 
+                <span style="display: inline-block; font-size: 25px; color: Red; font-weight: bold;">$ {{this.price-1}}</span>
+                <a style="display: inline-block; font-size: 17px; font-weight: bold;">/ $ {{this.price}}</a> 
             </div>
             <div class="addToCart">
                 <button style="margin-left: 10px; border: none; outline: none; background-color: white; width: 260px;">

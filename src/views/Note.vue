@@ -25,3 +25,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.notes{
+    margin-top: 60px;
+}
+</style>
