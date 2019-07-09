@@ -54,8 +54,8 @@ export default {
     color: white;
 }
 .header-container{
-    margin-left: 130px;
     width: 1280px;
+    margin: 0 auto;
 }
 .menu{
     font-weight: bold;

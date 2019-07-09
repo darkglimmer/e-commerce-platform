@@ -27,9 +27,9 @@ export default {
 .detail{
     width: 100%;
     height: 100vh;
-    margin-top: 180px;
     margin-left: 230px;
     margin-right: 200px;
+    padding: 180px  0;
 }
 </style>
 
