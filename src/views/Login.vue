@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="login-foot">
-        <Footer />
+        <Footer :ifLogo="true" />
     </div>
 </div>
 </template>
@@ -27,7 +27,7 @@ import Footer from '@/components/Footer.vue'
 export default {
   name: 'Login',
   components: {
-    Footer
+    Footer,
   },
   data(){
     return {

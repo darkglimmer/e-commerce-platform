@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <div class="footer-logo">
+        <div v-if="this.ifLogo" class="footer-logo">
             <img width="100px" src="../assets/logo.png" />
         </div>
         <div class="footer-pay">
@@ -16,6 +16,9 @@
 
 export default {
   name: 'Header',
+  props:{
+    ifLogo: Boolean
+  },
   data () {
     return {
     }

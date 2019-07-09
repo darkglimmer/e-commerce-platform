@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Menu, MenuItem, Submenu, MenuItemGroup, Card, Form, FormItem, Input, Select, Option, DatePicker, Carousel, CarouselItem, Rate, InputNumber, Tabs, TabPane, Table, TableColumn } from 'element-ui'
+import { Button, Menu, MenuItem, Submenu, MenuItemGroup, Card, Form, FormItem, Input, Select, Option, DatePicker, Carousel, CarouselItem, Rate, InputNumber, Tabs, TabPane, Table, TableColumn, Checkbox } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Menu)
@@ -21,3 +21,4 @@ Vue.use(Tabs)
 Vue.use(TabPane)
 Vue.use(Table)
 Vue.use(TableColumn)
+Vue.use(Checkbox)
