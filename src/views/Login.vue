@@ -17,7 +17,7 @@
     <div class="login-foot">
         <Footer :ifLogo="true" />
     </div>
-</div>
+    </div>
 </template>
 
 <script>
