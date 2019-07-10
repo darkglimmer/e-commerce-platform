@@ -1,7 +1,7 @@
 <template>
     <div class="note">
         <div class="image">
-            <img style="height: 290px; width: 290px;" src="../assets/product.jpg">
+            <img style="height: 290px; width: 290px;" src="this.imageURL">
         </div>
         <div class="block"></div>
         <div class="info">
@@ -9,7 +9,7 @@
                 <span style="font-weight: bold;">{{this.name}}</span>
             </div>
             <div class="description">
-                <a>{{this.description}}</a>
+                <a>{{this.desc}}</a>
             </div>
             <div class="price">
                 <span style="display: inline-block; font-size: 25px; color: Red; font-weight: bold;">$ {{this.price-1}}</span>
@@ -30,9 +30,10 @@ export default {
   name: 'note',
   props: {
     name: String,
-    description: String,
+    desc: String,
     price: Number,
     productID: Number,
+    imageURL: String,
   },
   data () {
     return {
