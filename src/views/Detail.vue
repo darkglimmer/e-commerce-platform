@@ -1,6 +1,6 @@
 <template>
     <div class="detail">
-        <ProductCard></ProductCard>
+        <ProductCard :productId="this.id" :name="this.name" :num="this.num" :price="this.price" :desc="this.desc" :imagUrl="this.imagUrl"></ProductCard>
         <Information></Information>
     </div>
 </template>

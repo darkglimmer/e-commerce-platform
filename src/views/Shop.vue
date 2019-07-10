@@ -75,7 +75,7 @@
         </el-table>
         <div>
             <el-button class="shop-button" type="info" round @click="goShopping">继续购物</el-button>
-            <el-button class="shop-button" type="info" style="margin-left:400px" round @click="deleteAll">清空购物车</el-button> 
+            <el-button class="shop-button" type="info" style="margin-left:550px" round @click="deleteAll">清空购物车</el-button> 
             <el-button class="shop-button" type="info" round>刷新购物车</el-button>
         </div>
     </div>
@@ -160,13 +160,13 @@ export default {
             headers: {
                 "Content-Type":"application/json",
             },
-            }).then(res => {
+        }).then(res => {
             if (res.ok){
                 return res.json();
             }
-            }).then(res => {
-                this.tableData = res.body
-            })
+        }).then(res => {
+            this.tableData = res.body
+        })
     },
     methods:{
         getShoppingCart(){
