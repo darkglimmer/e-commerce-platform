@@ -2,6 +2,9 @@
     <div class="detail">
         <ProductCard :productId="this.id" :name="this.name" :num="this.num" :price="this.price" :desc="this.desc" :imagUrl="this.imagUrl"></ProductCard>
         <Information></Information>
+        <div class="detail-footer">
+            <Footer />
+        </div>
     </div>
 </template>
 
@@ -52,8 +55,10 @@ export default {
 
 <style>
 .detail{
-    width: 100%;
     margin-top: 180px;
+}
+.detail-footer{
+    margin-top: 100px;
 }
 </style>
 

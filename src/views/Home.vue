@@ -9,7 +9,7 @@
               text-color="#fff"
               @select="handleSelect"
               active-text-color="#ff5a5b">
-              <el-menu-item index="1">
+              <el-menu-item index="1" >
                 <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">家用器具 >></span></template>
               </el-menu-item>
               <el-menu-item index="2">
@@ -19,7 +19,7 @@
                 <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">户外必备 >></span></template>
               </el-menu-item>
               <el-menu-item index="4">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">当下最IN >></span></template>
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">当下最热 >></span></template>
               </el-menu-item>
               <el-menu-item index="5">
                 <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">海外放心 >></span></template>
@@ -31,10 +31,10 @@
                 <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">点心零食 >></span></template>
               </el-menu-item>
               <el-menu-item index="8">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">点心零食 >></span></template>
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">图书文娱 >></span></template>
               </el-menu-item>
               <el-menu-item index="9">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">点心零食 >></span></template>
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">国际名牌 >></span></template>
               </el-menu-item>
             </el-menu>
         </div>
@@ -147,6 +147,18 @@ export default {
       this.active = index;
     },
     handleSelect(key, keyPath){
+      fetch(`/api/product?categoryId=${key}`, {
+          method: 'GET',
+          headers: {
+            "Content-Type":"application/json",
+          },
+        }).then(res => {
+          if (res.ok){
+            return res.json();
+          }
+        }).then(res => {
+            this.notes = res.body
+      })
       let anchorElement = document.getElementById('abc');
       if(anchorElement) { anchorElement.scrollIntoView(); }  
     }

@@ -110,20 +110,18 @@ export default {
 <style>
 .card-productNote{
   height: 400px;
-  vertical-align: top;
-  vertical-align: bottom;
 }
 .card-img{
   display: inline-block;
-  width: 400px;
-  height: 400px;
-  margin-left: 0;
+  width: 350px;
+  height: 350px;
+  margin-left: 80px;
 }
 .card-information{
   display: inline-block;
   height: 400px;
   width: 500px;
-  margin-left: 70px;
+  margin-left: 80px;
   vertical-align: top;
   vertical-align: bottom;
 }
@@ -144,10 +142,11 @@ export default {
   margin-top: 5px;
   height: 55px;
   font-size: 15px;
+  width: 500px;
 }
 .card-shopping{
   display: inline-block;
-  margin-left: 100px;
+  margin-left: 60px;
   width: 300px;
   height: 400px;
   vertical-align: top;

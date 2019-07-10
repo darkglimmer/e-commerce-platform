@@ -3,7 +3,7 @@
         <hr width=100% size=2 color=#B0B0B0 style="filter:progid:DXImageTransform.Microsoft.Glow(color=#B0B0B0); margin-top: 10px;"> 
         <div class="information-tabs">
             <div class=el-tabs__item>
-                <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+                <el-tabs v-model="activeName" style="width:1350px" type="card" @tab-click="handleClick">
                     <el-tab-pane label="商品概况" name="first">{{this.content1}}</el-tab-pane>
                     <el-tab-pane label="商品描述" name="second"></el-tab-pane>
                     <el-tab-pane label="附加信息" name="third"></el-tab-pane>
@@ -31,12 +31,11 @@ export default {
 </script>
 <style>
 .information{
-    margin-left: 0px;
     margin-top: 120px;
-    width: 1450px;
 }
 .information-tabs{
     margin-top: 50px;
+    margin-left: 30px;
     color: red;
 }
 .el-tabs__item.is-top{
@@ -57,6 +56,5 @@ export default {
 }
 .el-tab-pane{
     color: black !important;
-    width: 1450px;
 }
 </style>
