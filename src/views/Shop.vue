@@ -215,6 +215,9 @@ export default {
         },
         deleteAll(){
             this.tableData=[];
+        },
+        checked() {
+            
         }
     }
 }
