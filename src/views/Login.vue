@@ -14,15 +14,14 @@
             <div class="login-tips">I have not registed yet, click to <span style="cursor:pointer;" @click="toRegister" class="register">register</span></div>
         </div>
     </div>
-    <div class="login-foot">
+    <!-- <div class="login-foot">
         <Footer />
-    </div>
+    </div> -->
 </div>
 </template>
 
 <script>
 import Footer from '@/components/Footer.vue'
-// import Cookie from '@/cookie.js'
 
 export default {
   name: 'Login',
@@ -56,7 +55,7 @@ export default {
               return res
             }
           }).then(res => {
-            cookie.setCookie('userId', res.id);
+            localStorage.setItem("userId",res.id);                   // 存储变量名为key，值为value的变量
             this.$router.push('/');
           })
       }

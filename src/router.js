@@ -6,6 +6,7 @@ import Register from './views/Register.vue'
 import TestNote from './views/Note.vue'
 import TestDetail from './views/Detail.vue'
 import ShoppingCart from './views/Shop.vue'
+import Address from './views/Address.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -41,6 +42,11 @@ export default new Router({
       path: '/shoppingCart',
       name: 'shoppingCart',
       component: ShoppingCart
+    },
+    {
+      path: '/address',
+      name: 'Address',
+      component: Address
     }
   ]
 })
