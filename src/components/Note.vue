@@ -1,7 +1,7 @@
 <template>
     <div class="note">
         <div class="image">
-            <img style="height: 290px; width: 290px;" src="../assets/product.jpg">
+            <img style="height: 290px; width: 290px;" :src="imagUrl">
         </div>
         <div class="block"></div>
         <div class="info">
@@ -33,6 +33,7 @@ export default {
     description: String,
     price: Number,
     productID: Number,
+    imagUrl: String,
   },
   data () {
     return {
