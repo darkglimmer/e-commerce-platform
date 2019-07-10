@@ -93,33 +93,17 @@
         <div style="margin-top:50px;">
             <el-checkbox v-model="checked">我已同意隐私政策</el-checkbox>
         </div>
-        <el-button class="check-button" type="danger">支付</el-button>
+        <el-button class="check-button" type="danger" @click.native="chooseAddress(true)">支付</el-button>
     </div>
-    <!-- <div class="pop-container">
+    <div class="pop-container" v-if="this.pop">
         <div class="address-selection">
-        <el-collapse v-model="activeName" accordion>
-            <el-collapse-item title="王鹏宇是梅西" name="1">
-                <div><Address :nickname="this.addresses[0].name"
-                            :postcode="this.addresses[0].postcode"
-                            :phone="this.addresses[0].phone"
-                            :province="this.addresses[0].province"
-                            :city="this.addresses[0].city"
-                            :country="this.addresses[0].country"
-                            :street="this.addresses[0].street"
-                            :address="this.addresses[0].address"></Address></div>
-            </el-collapse-item>
-            <el-collapse-item title="王鹏宇不是梅西" name="2">
-                <div><Address></Address></div>
-            </el-collapse-item>
-            <el-collapse-item title="王鹏宇竟然不是梅西" name="3">
-                <div><Address></Address></div>
-            </el-collapse-item>
-            <el-collapse-item title="王鹏宇是梅西吗？" name="4">
-                <div><Address></Address></div>
-            </el-collapse-item>
-        </el-collapse> -->
-        <!-- </div> 
-    </div> -->
+            <AddressSelection></AddressSelection>
+        </div>
+        <div style="margin-top: 50px; margin-left: 700px;">
+            <el-button type="danger" round @click.native="chooseAddress(false)">选择地址信息</el-button>
+        </div>
+    </div>
+
     <div>
         <Footer :ifLogo="true" />
     </div>
@@ -128,29 +112,21 @@
 
 <script>
 import Footer from "../components/Footer"
-import Address from "@/components/Address.vue"
+import AddressSelection from '@/components/AddressSelection.vue'
 
 export default {
     name: "shoppingCart",
     components:{
-        Footer
+        Footer,
+        AddressSelection
     },
     data(){
         return{
+            checked: false,
+            pop: false,
             tableData:[],
             multipleSelection: [],
             summary: 0,
-            activeName: "1",
-            addresses: [{
-                name: "梅西",
-                postcode: "430000",
-                phone: "1364749287",
-                province: "湖北省",
-                city: "武汉市",
-                country: "洪山区",
-                street: "虎泉街道",
-                address: "湖北省武汉市洪山区珞喻路152号华中师范大学东区宿舍16"
-            }]
         }
     },
     mounted(){
@@ -216,8 +192,14 @@ export default {
         deleteAll(){
             this.tableData=[];
         },
-        checked() {
-            
+        chooseAddress(v) {
+            if (v) {
+                if (!this.checked) {
+                    window.alert("请先同意用户隐私政策！")
+                    return
+                }
+            } 
+            this.pop = v
         }
     }
 }
@@ -267,9 +249,9 @@ export default {
 }
 .address-selection{
     margin-left: 350px;
-    margin-top: 250px;
+    margin-top: 100px;
     width: 800px;
-    height: 800px;
+    border-radius: 10px;
 }
 </style>
 
