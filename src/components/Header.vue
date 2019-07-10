@@ -9,7 +9,8 @@
                 <el-menu-item style="font-size: 18px;" index="1">主页</el-menu-item>
                 <el-menu-item style="font-size: 18px;" index="2">购物车</el-menu-item>
                 <el-menu-item style="font-size: 18px;" index="3">关于我们</el-menu-item>
-                <span class="header-login">登录</span>
+                <span v-if="!this.ifLogin" @click="login" class="header-login">登录</span>
+                <span v-if="this.ifLogin" @click="logout" class="header-login">退出</span>
             </el-menu>
         </div>
     </div>
@@ -19,9 +20,8 @@
 
 export default {
   name: 'Header',
-  data () {
-    return {
-    }
+  props:{
+      ifLogin: Boolean
   },
   methods: {
       handleSelect(key, keyPath){
@@ -31,6 +31,14 @@ export default {
           if(key == 2){
               this.$router.push("/shoppingCart");
           }
+      },
+      login(){
+           this.$router.push("/login");
+      },
+      logout(){
+            window.localStorage.clear();
+            this.ifLogin = false;
+            this.$router.push("/login");
       }
   }
 }
@@ -62,6 +70,7 @@ export default {
     font-size: 18px;
 }
 .header-login{
+    cursor: pointer;
     float: right;
     margin-right: 30px;
     color: white;

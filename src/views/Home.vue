@@ -51,7 +51,7 @@
       <img src="../assets/header.png" />
     </div>
     <div class="shopping-notes">
-        <Note class="notes" v-for="note in notes" :key="note.productID" :name="note.name" :description="note.description" :price="note.price"></Note>   
+        <Note class="notes" v-for="note in notes" :imagUrl="note.imagUrl" :key="note.id" :id="note.id" :name="note.name" :desc="note.desc" :price="note.price"></Note>   
     </div>
     <div class="middle">
       <div class="home-card">
@@ -118,51 +118,29 @@ export default {
   data(){
       return {
         imgList:[
-          { url:require( "../assets/banner1.jpg") },
-          { url:require( "../assets/banner2.jpg") },
-          { url:require( "../assets/banner3.jpg") }
+          { url: require( "../assets/banner1.jpg") },
+          { url: require( "../assets/banner2.jpg") },
+          { url: require( "../assets/banner3.jpg") }
         ],
         category: "Daily Life Life Life",
         active: 1,
-        notes: [
-          {
-            name: 'ACR System - 15mm Rods Adapter',
-            description: "Here's the story of a man.",
-            price: 12.00,
-            productID: 1,
-        },
-        {
-            name: 'ACR System - 15mm Rods Adapter',
-            description: "Here's the story of a man.",
-            price: 12.00,
-            productID: 1,
-        },
-         {
-            name: 'ACR System - 15mm Rods Adapter',
-            description: "Here's the story of a man.",
-            price: 12.00,
-            productID: 1,
-        },
-         {
-            name: 'ACR System - 15mm Rods Adapter',
-            description: "Here's the story of a man.",
-            price: 12.00,
-            productID: 1,
-        },
-         {
-            name: 'ACR System - 15mm Rods Adapter',
-            description: "Here's the story of a man.",
-            price: 12.00,
-            productID: 1,
-        },
-         {
-            name: 'ACR System - 15mm Rods Adapter',
-            description: "Here's the story of a man.",
-            price: 12.00,
-            productID: 1,
-        },
-        ]
+        ifLogin: false,
+        notes: []
       }
+  },
+  mounted(){
+     fetch(`/api/ProductServlet?action=showAll`, {
+          method: 'GET',
+          headers: {
+            "Content-Type":"application/json",
+          },
+        }).then(res => {
+          if (res.ok){
+            return res.json();
+          }
+        }).then(res => {
+            this.notes = res
+      })
   },
   methods:{
     showActive(index){
@@ -171,8 +149,7 @@ export default {
     handleSelect(key, keyPath){
       let anchorElement = document.getElementById('abc');
       if(anchorElement) { anchorElement.scrollIntoView(); }  
-
-   }
+    }
   }
 }
 </script>

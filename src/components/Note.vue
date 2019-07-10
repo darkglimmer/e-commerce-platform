@@ -1,7 +1,7 @@
 <template>
     <div class="note">
-        <div class="image">
-            <img style="height: 290px; width: 290px;" src="this.imageURL">
+        <div  @click="todetail" class="image">
+            <img style="height: 290px; width: 290px;" :src="imagUrl">
         </div>
         <div class="block"></div>
         <div class="info">
@@ -16,7 +16,7 @@
                 <a style="display: inline-block; font-size: 17px; font-weight: bold;">/ $ {{this.price}}</a> 
             </div>
             <div class="addToCart">
-                <button style="margin-left: 10px; border: none; outline: none; background-color: white; width: 260px;">
+                <button @click="todetail" style="margin-left: 10px; border: none; outline: none; background-color: white; width: 260px;">
                     <span style="font-size: 30px; margin-left: 0;">🛒</span>
                     <span style="font-size: 20px; margin-right: 0; font-weight: 700">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ADD TO CART</span>
                 </button>
@@ -32,14 +32,17 @@ export default {
     name: String,
     desc: String,
     price: Number,
-    productID: Number,
-    imageURL: String,
+    id: Number,
+    imagUrl: String,
   },
   data () {
     return {
     }
   },
   methods: {
+    todetail(){
+      this.$router.push(`/product/${this.id}/detail`);
+    }
   }
 }
 </script>
@@ -68,6 +71,8 @@ export default {
 .description{
     margin-top: 5px;
     width: 260px;
+    height: 40px;
+    overflow: scroll;
     margin-left: 20px;
 }
 .price{
