@@ -43,6 +43,12 @@
         </el-carousel>
       </div>  
     </div>
+    <div class="product-title">
+      <img src="../assets/header.png" />
+    </div>
+    <div class="shopping-notes">
+        <Note class="notes" v-for="note in notes" :key="note.productID" :name="note.name" :description="note.description" :price="note.price"></Note>   
+    </div>
     <div class="middle">
       <div class="home-card">
         <div class="home-card-item"  v-show="this.active !== 1" @mouseenter="showActive(1)">
@@ -87,11 +93,8 @@
         </div>
       </div>
     </div>
-    <div class="product-title">
-      <img src="../assets/header.png" />
-    </div>
-    <div>
-        <Note v-for="note in notes" :key="note.productID" :name="note.name" :description="note.description" :price="note.price"></Note>   
+    <div class="home-footer">
+      <Footer />
     </div>
   </div>
 </template>
@@ -99,12 +102,14 @@
 <script>
 import Classify from "../components/Classify"
 import Note from "../components/Note"
+import Footer from "../components/Footer"
 
 export default {
   name: 'home',
   components:{
     Classify,
-    Note
+    Note,
+    Footer
   },
   data(){
       return {
@@ -115,12 +120,44 @@ export default {
         ],
         category: "Daily Life Life Life",
         active: 1,
-        notes: [{
+        notes: [
+          {
             name: 'ACR System - 15mm Rods Adapter',
             description: "Here's the story of a man.",
             price: 12.00,
             productID: 1,
-        }]
+        },
+        {
+            name: 'ACR System - 15mm Rods Adapter',
+            description: "Here's the story of a man.",
+            price: 12.00,
+            productID: 1,
+        },
+         {
+            name: 'ACR System - 15mm Rods Adapter',
+            description: "Here's the story of a man.",
+            price: 12.00,
+            productID: 1,
+        },
+         {
+            name: 'ACR System - 15mm Rods Adapter',
+            description: "Here's the story of a man.",
+            price: 12.00,
+            productID: 1,
+        },
+         {
+            name: 'ACR System - 15mm Rods Adapter',
+            description: "Here's the story of a man.",
+            price: 12.00,
+            productID: 1,
+        },
+         {
+            name: 'ACR System - 15mm Rods Adapter',
+            description: "Here's the story of a man.",
+            price: 12.00,
+            productID: 1,
+        },
+        ]
       }
   },
   methods:{
@@ -174,6 +211,15 @@ export default {
   .product-title{
     width: 650px;
     margin: 50px auto;
+  }
+  .shopping-notes{
+    width: 1300px;
+    margin: 0 auto;
+  }
+  .notes{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left:30px; 
   }
   .category-list{
     display: inline-block;

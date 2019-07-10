@@ -14,10 +14,10 @@
             <div class="login-tips">I have not registed yet, click to <span style="cursor:pointer;" @click="toRegister" class="register">register</span></div>
         </div>
     </div>
-    <!-- <div class="login-foot">
-        <Footer />
-    </div> -->
-</div>
+    <div class="login-foot">
+        <Footer :ifLogo="true" />
+    </div>
+    </div>
 </template>
 
 <script>
@@ -26,7 +26,7 @@ import Footer from '@/components/Footer.vue'
 export default {
   name: 'Login',
   components: {
-    Footer
+    Footer,
   },
   data(){
     return {
