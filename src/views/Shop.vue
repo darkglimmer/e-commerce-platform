@@ -129,6 +129,7 @@
 <script>
 import Footer from "../components/Footer"
 import Address from "@/components/Address.vue"
+
 export default {
     name: "shoppingCart",
     components:{
@@ -257,6 +258,7 @@ export default {
     margin-left: 350px;
     margin-top: 250px;
     width: 800px;
+    height: 800px;
 }
 </style>
 
