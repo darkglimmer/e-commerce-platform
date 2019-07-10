@@ -27,7 +27,7 @@ export default {
             imagUrl: ''
         }
     },
-    computed(){
+    mounted(){
          this.id = this.$route.params.id
          fetch(`/api/ProductServlet?action=seek&ID=${this.id}`, {
           method: 'GET',

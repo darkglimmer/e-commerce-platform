@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
-import TestNote from './views/Note.vue'
 import TestDetail from './views/Detail.vue'
 import ShoppingCart from './views/Shop.vue'
 import Address from './views/Address.vue'
@@ -30,11 +29,6 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register
-    },
-    {
-      path: '/testcomponents/note',
-      name: 'TestNote',
-      component: TestNote
     },
     {
       path: '/product/:id/detail',
