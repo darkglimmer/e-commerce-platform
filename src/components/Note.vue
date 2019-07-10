@@ -1,6 +1,6 @@
 <template>
     <div class="note">
-        <div class="image">
+        <div  @click="todetail" class="image">
             <img style="height: 290px; width: 290px;" :src="imagUrl">
         </div>
         <div class="block"></div>
@@ -9,14 +9,14 @@
                 <span style="font-weight: bold;">{{this.name}}</span>
             </div>
             <div class="description">
-                <a>{{this.description}}</a>
+                <a>{{this.desc}}</a>
             </div>
             <div class="price">
                 <span style="display: inline-block; font-size: 25px; color: Red; font-weight: bold;">$ {{this.price-1}}</span>
                 <a style="display: inline-block; font-size: 17px; font-weight: bold;">/ $ {{this.price}}</a> 
             </div>
             <div class="addToCart">
-                <button style="margin-left: 10px; border: none; outline: none; background-color: white; width: 260px;">
+                <button @click="todetail" style="margin-left: 10px; border: none; outline: none; background-color: white; width: 260px;">
                     <span style="font-size: 30px; margin-left: 0;">🛒</span>
                     <span style="font-size: 20px; margin-right: 0; font-weight: 700">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ADD TO CART</span>
                 </button>
@@ -30,9 +30,9 @@ export default {
   name: 'note',
   props: {
     name: String,
-    description: String,
+    desc: String,
     price: Number,
-    productID: Number,
+    id: Number,
     imagUrl: String,
   },
   data () {
@@ -40,6 +40,9 @@ export default {
     }
   },
   methods: {
+    todetail(){
+      this.$router.push(`/product/${this.id}/detail`);
+    }
   }
 }
 </script>
@@ -68,6 +71,8 @@ export default {
 .description{
     margin-top: 5px;
     width: 260px;
+    height: 40px;
+    overflow: scroll;
     margin-left: 20px;
 }
 .price{

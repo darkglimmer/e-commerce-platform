@@ -17,9 +17,36 @@ export default {
         Information,
         Footer
     },
-    data() {
-
+    data(){
+        return{
+            id: 0,
+            name: '',
+            num: 0,
+            price: 0,
+            desc: '',
+            imagUrl: ''
+        }
+    },
+    computed(){
+         this.id = this.$route.params.id
+         fetch(`/api/ProductServlet?action=seek&ID=${this.id}`, {
+          method: 'GET',
+          headers: {
+            "Content-Type":"application/json",
+          },
+        }).then(res => {
+          if (res.ok){
+            return res.json();
+          }
+        }).then(res => {
+            this.name = res.name,
+            this.num = res.num,
+            this.price = res.price,
+            this.desc = res.desc,
+            this.imagUrl = res.imagUrl
+      })
     }
+
 }
 </script>
 

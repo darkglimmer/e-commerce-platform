@@ -51,7 +51,7 @@
       <img src="../assets/header.png" />
     </div>
     <div class="shopping-notes">
-        <Note class="notes" v-for="note in notes" :imagUrl="note.imagUrl" :key="note.productID" :name="note.name" :description="note.description" :price="note.price"></Note>   
+        <Note class="notes" v-for="note in notes" :imagUrl="note.imagUrl" :key="note.id" :id="note.id" :name="note.name" :desc="note.desc" :price="note.price"></Note>   
     </div>
     <div class="middle">
       <div class="home-card">
@@ -139,7 +139,6 @@ export default {
             return res.json();
           }
         }).then(res => {
-            console.log(res)
             this.notes = res
       })
   },
@@ -150,8 +149,7 @@ export default {
     handleSelect(key, keyPath){
       let anchorElement = document.getElementById('abc');
       if(anchorElement) { anchorElement.scrollIntoView(); }  
-
-   }
+    }
   }
 }
 </script>

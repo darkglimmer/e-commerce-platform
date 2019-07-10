@@ -16,7 +16,10 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        keepalive: false
+      }
     },
     {
       path: '/login',
@@ -36,7 +39,10 @@ export default new Router({
     {
       path: '/product/:id/detail',
       name: 'TestDetail',
-      component: TestDetail
+      component: TestDetail,
+      meta: {
+        keepalive: false
+      }
     },
     {
       path: '/shoppingCart',
