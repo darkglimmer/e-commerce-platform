@@ -49,7 +49,7 @@ export default {
 
 <style scoped>
 .note{
-    height: 500px;
+    height: 550px;
     width: 290px;
     background-color: white;
 }

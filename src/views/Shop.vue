@@ -22,15 +22,15 @@
             label="商品编号">
         </el-table-column>
         <el-table-column
-            prop="img"
+            prop="imagUrl"
             width="60"
             align="center">
               <template slot-scope="scope">
-                <img :src="scope.row.img" style="width: 50px;height: 50px">
+                <img :src="scope.row.imagUrl" style="width: 50px;height: 50px">
               </template>
         </el-table-column>
         <el-table-column
-            prop="product"
+            prop="name"
             label="商品名称"
             width="220"
             align="center">
@@ -45,12 +45,12 @@
           </template>
         </el-table-column>
         <el-table-column
-            prop="number"
+            prop="num"
             align="center"
             label="数量"
             width="180">
             <template slot-scope="scope">
-                <el-input-number v-model="scope.row.number" size="mini" width="50px" @change="handleChange(scope.row.number)" :min="1"></el-input-number>
+                <el-input-number v-model="scope.row.num" size="mini" width="50px" @change="handleChange(scope.row.num)" :min="1"></el-input-number>
             </template>
         </el-table-column>
          <el-table-column
@@ -58,7 +58,7 @@
             label="总价"
             width="100">
          <template slot-scope="scope">
-            ${{scope.row.number * scope.row.price}}
+            ${{scope.row.num * scope.row.price}}
           </template>
         </el-table-column>
           <el-table-column
@@ -103,6 +103,7 @@
             <el-button type="danger" round @click.native="chooseAddress(false)">选择地址信息</el-button>
         </div>
     </div>
+
     <div>
         <Footer :ifLogo="true" />
     </div>
@@ -123,42 +124,50 @@ export default {
         return{
             checked: false,
             pop: false,
-            tableData:[
-                {
-                    id: 1,
-                    img: require('../assets/cart1.jpg'),
-                    product: 'smart phone',
-                    price: 299.00,
-                    number: 1,
-                },
-                {
-                    id: 2,
-                    img: require('../assets/cart1.jpg'),
-                    product: 'smart phone',
-                    price: 299.00,
-                    number: 1,
-                },
-                {
-                    id: 3,
-                    img: require('../assets/cart1.jpg'),
-                    product: 'smart phone',
-                    price: 299.00,
-                    number: 1,
-                }
-            ],
+            tableData:[],
             multipleSelection: [],
             summary: 0,
         }
     },
+    mounted(){
+        const User = window.localStorage.getItem("userID")
+        fetch(`/api/shop?action=getShopCar&userId=${User}`, {
+            method: 'GET',
+            headers: {
+                "Content-Type":"application/json",
+            },
+            }).then(res => {
+            if (res.ok){
+                return res.json();
+            }
+            }).then(res => {
+                this.tableData = res.body
+            })
+    },
     methods:{
-        handleChange(number){
-            this.number = number
+        getShoppingCart(){
+            const User = window.localStorage.getItem("userID")
+            fetch(`/api/shop?action=getShopCar&userId=${User}`, {
+                method: 'GET',
+                headers: {
+                    "Content-Type":"application/json",
+                },
+                }).then(res => {
+                if (res.ok){
+                    return res.json();
+                }
+                }).then(res => {
+                    this.tableData = res.body
+            })
+        },
+        handleChange(num){
+            this.num = num
             console.log(this.tableData)
             this.summary = 0;
             for(var i in this.tableData){
                 for(var j in this.multipleSelection){
                     if(this.multipleSelection[j].id === this.tableData[i].id){
-                        this.summary += this.tableData[i].price * this.tableData[i].number
+                        this.summary += this.tableData[i].price * this.tableData[i].num
                     }
                 }
             }
@@ -169,7 +178,7 @@ export default {
             for(var i in this.tableData){
                 for(var j in this.multipleSelection){
                     if(this.multipleSelection[j].id === this.tableData[i].id){
-                        this.summary += this.tableData[i].price * this.tableData[i].number
+                        this.summary += this.tableData[i].price * this.tableData[i].num
                     }
                 }
             }
