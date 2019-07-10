@@ -7,11 +7,11 @@
         <div class="login-card">
             <div class="login-card-title">Welcome to login</div>
             <el-form label-width="80px">
-                <div class="login-message">Username:<el-input v-model="account"></el-input></div>
-                <div class="login-message">Password:<el-input v-model="password"></el-input></div>
-                <el-button type="danger" class="login-button" round @click="login">Login</el-button>
+                <div class="login-message">用户名:<el-input v-model="account"></el-input></div>
+                <div class="login-message">密码:<el-input v-model="password"></el-input></div>
+                <el-button type="danger" class="login-button" round @click="login">登录</el-button>
             </el-form>
-            <div class="login-tips">I have not registed yet, click to <span style="cursor:pointer;" @click="toRegister" class="register">register</span></div>
+            <div class="login-tips">还没账号，马上<span style="cursor:pointer;" @click="toRegister" class="register">注册</span></div>
         </div>
     </div>
     <div class="login-foot">
@@ -22,7 +22,6 @@
 
 <script>
 import Footer from '@/components/Footer.vue'
-// import Cookie from '@/cookie.js'
 
 export default {
   name: 'Login',
@@ -52,11 +51,10 @@ export default {
             body: JSON.stringify(data)
           }).then(res => {
             if (res.ok){
-              console.log(res.json());
-              return res
+              return res.json();
             }
           }).then(res => {
-            cookie.setCookie('userId', res.id);
+            window.localStorage.setItem("userID", res.body.id)
             this.$router.push('/');
           })
       }

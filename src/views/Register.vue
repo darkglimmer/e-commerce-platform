@@ -4,19 +4,19 @@
         <div class="login-card">
             <div class="login-card-title">Welcome to register</div>
             <el-form>
-                <div class="login-message">Username:<el-input v-model="username"></el-input></div>
-                <div class="login-message">Password:<el-input v-model="password"></el-input></div>
-                <div class="login-message">Set the secret issue:<el-input v-model="question"></el-input></div>
-                <div class="login-message">Your answer:<el-input v-model="answer"></el-input></div>
-                <div class="login-message">Sex: 
+                <div class="login-message">用户名:<el-input v-model="username"></el-input></div>
+                <div class="login-message">密码:<el-input v-model="password"></el-input></div>
+                <div class="login-message">设置密保问题:<el-input v-model="question"></el-input></div>
+                <div class="login-message">你的回答:<el-input v-model="answer"></el-input></div>
+                <div class="login-message">性别: 
                     <div class="login-message">
                         <el-select v-model="sex" placeholder="" style="width:350px">
-                            <el-option label="woman" value="0"></el-option>
-                            <el-option label="man" value="1"></el-option>
+                            <el-option label="女" value="0"></el-option>
+                            <el-option label="男" value="1"></el-option>
                         </el-select>
                     </div>
                 </div>
-                <div class="login-message">Birthday: 
+                <div class="login-message">生日: 
                     <div class="login-message">
                         <el-date-picker
                             v-model="birth"
@@ -26,15 +26,15 @@
                         </el-date-picker>
                     </div>
                 </div>
-                <div class="login-message">Your Phone:<el-input v-model="phone"></el-input></div>
-                <div class="login-message">Your Email:<el-input v-model="mail"></el-input></div>
-                <el-button type="danger" class="login-button" round>register</el-button>
+                <div class="login-message">手机:<el-input v-model="phone"></el-input></div>
+                <div class="login-message">邮箱:<el-input v-model="mail"></el-input></div>
+                <el-button type="danger" class="login-button" round>注册</el-button>
             </el-form>
-            <div class="login-tips">I have an account, click to <span style="cursor:pointer;" @click="toLogin" class="register">login</span></div>
+            <div class="login-tips">已有账号，立刻 <span style="cursor:pointer;" @click="toLogin" class="register">登录</span></div>
         </div>
     </div>
     <div class="login-foot">
-        <Footer />
+        <Footer :ifLogo="true" />
     </div>
 </div>
 </template>

@@ -2,48 +2,52 @@
   <div class="home">
     <div class="category-and-banner">
       <div class="category-list">
-        <div class="el-submenu__title">
+        <div class="menu">
         <el-menu
-              default-active="2"
               class="el-menu-vertical-demo"
-              @open="handleOpen"
-              @close="handleClose"
-              background-color="#545c64"
+              background-color="rgb(12, 39, 60)"
               text-color="#fff"
-              active-text-color="#ffd04b">
-              <el-submenu index="1">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">家用器具 >></span></template>
-              </el-submenu>
-              <el-submenu index="1">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">电子产品 >></span></template>
-              </el-submenu>
-              <el-submenu index="1">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">户外必备 >></span></template>
-              </el-submenu>
-              <el-submenu index="1">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">当下最IN >></span></template>
-              </el-submenu>
-              <el-submenu index="1">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">海外放心 >></span></template>
-              </el-submenu>
-              <el-submenu index="1">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">出行穿搭 >></span></template>
-              </el-submenu>
-              <el-submenu index="1">
-                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 20px; line-height: 80px;">点心零食 >></span></template>
-              </el-submenu>
+              @select="handleSelect"
+              active-text-color="#ff5a5b">
+              <el-menu-item index="1">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">家用器具 >></span></template>
+              </el-menu-item>
+              <el-menu-item index="2">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">电子产品 >></span></template>
+              </el-menu-item>
+              <el-menu-item index="3">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">户外必备 >></span></template>
+              </el-menu-item>
+              <el-menu-item index="4">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">当下最IN >></span></template>
+              </el-menu-item>
+              <el-menu-item index="5">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">海外放心 >></span></template>
+              </el-menu-item>
+              <el-menu-item index="6">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">出行穿搭 >></span></template>
+              </el-menu-item>
+              <el-menu-item index="7">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">点心零食 >></span></template>
+              </el-menu-item>
+              <el-menu-item index="8">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">点心零食 >></span></template>
+              </el-menu-item>
+              <el-menu-item index="9">
+                <template slot="title"><i class="el-icon-document"></i><span style="font-size: 18px; line-height: 60px;">点心零食 >></span></template>
+              </el-menu-item>
             </el-menu>
         </div>
       </div>
       <div class="banner">
-        <el-carousel height="450px">
+        <el-carousel height="504px">
           <el-carousel-item v-for="item in imgList" :key="item">
-            <img :src="item.url" />
+            <img :src="item.url" height="504px" width="1005px"/>
           </el-carousel-item>
         </el-carousel>
       </div>  
     </div>
-    <div class="product-title">
+    <div id="abc" class="product-title">
       <img src="../assets/header.png" />
     </div>
     <div class="shopping-notes">
@@ -163,7 +167,12 @@ export default {
   methods:{
     showActive(index){
       this.active = index;
-    }
+    },
+    handleSelect(key, keyPath){
+      let anchorElement = document.getElementById('abc');
+      if(anchorElement) { anchorElement.scrollIntoView(); }  
+
+   }
   }
 }
 </script>
@@ -175,9 +184,11 @@ export default {
   .banner{
     /* margin-left: 500px; */
     display: inline-block;
-    margin-left: 350px;
-    margin-top: 100px;
-    width:800px;
+    vertical-align: top;
+    /* margin-left: 490px; */
+    margin-top: 0px;
+    font-size: 0;
+    width:1005px;
   }
   .middle{
     margin-top:100px;
@@ -203,14 +214,14 @@ export default {
     color: #ff5a5b;
     margin-left: 50px;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
     width: 220px;
-    padding:40px 20px;
+    padding:31px 20px;
     text-align: center;
   }
   .product-title{
     width: 650px;
-    margin: 50px auto;
+    margin: 60px auto 20px auto;
   }
   .shopping-notes{
     width: 1300px;
@@ -223,14 +234,13 @@ export default {
   }
   .category-list{
     display: inline-block;
-    margin-left: 200px;
-    margin-top: 45px;
     vertical-align: top;
+    margin-left: 80px;
   }
   .category-and-banner{
     vertical-align: top;
   }
-  .el-submenu__title{
+  .el-menu__title{
     width: 270px !important;
     height: 80px !important;
   }

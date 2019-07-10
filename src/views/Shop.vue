@@ -5,12 +5,21 @@
         ref="multipleTable"
         @selection-change="handleSelectionChange"
         :data="tableData"
-        style="width: 750px; background-color:#fdfdfd;"
+        style="width: 850px; background-color:#fdfdfd;"
         align="center"
         :header-cell-style="{background:'#fdfdfd'}">
+         <template slot="empty">
+            <div>购物车空空如也～快去购物吧</div>
+        </template>
         <el-table-column
             type="selection"
             width="35">
+        </el-table-column>
+        <el-table-column
+            prop="id"
+            width="90"
+            align="center"
+            label="商品编号">
         </el-table-column>
         <el-table-column
             prop="img"
@@ -22,59 +31,69 @@
         </el-table-column>
         <el-table-column
             prop="product"
-            label="Product Name"
+            label="商品名称"
             width="220"
             align="center">
         </el-table-column>
         <el-table-column
             prop="price"
-            label="Unit Price"
+            label="价格"
             align="center"
             width="100">
+        <template slot-scope="scope">
+            ${{scope.row.price}}
+          </template>
         </el-table-column>
         <el-table-column
             prop="number"
             align="center"
-            label="Qty"
+            label="数量"
             width="180">
             <template slot-scope="scope">
                 <el-input-number v-model="scope.row.number" size="mini" width="50px" @change="handleChange(scope.row.number)" :min="1"></el-input-number>
             </template>
         </el-table-column>
          <el-table-column
-            prop="total"
             align="center"
-            label="SubTotal"
+            label="总价"
             width="100">
+         <template slot-scope="scope">
+            ${{scope.row.number * scope.row.price}}
+          </template>
         </el-table-column>
           <el-table-column
             width="55">
             <template slot-scope="scope">
-                <i class="el-icon-close"></i>
+               <el-button
+                    @click.native.prevent="deleteRow(scope.$index, tableData)"
+                    type="text"
+                    size="small">
+                ✖️
+                </el-button>
             </template>
         </el-table-column>
         </el-table>
         <div>
-            <el-button class="shop-button" type="info" round>CONTINUE SHOPPING</el-button>
-            <el-button class="shop-button" type="info" style="margin-left:200px" round>CLEAR SHOPPING CART</el-button> 
-            <el-button class="shop-button" type="info" round>UPDATE SHOPPING CART</el-button>
+            <el-button class="shop-button" type="info" round @click="goShopping">继续购物</el-button>
+            <el-button class="shop-button" type="info" style="margin-left:400px" round @click="deleteAll">清空购物车</el-button> 
+            <el-button class="shop-button" type="info" round>刷新购物车</el-button>
         </div>
     </div>
     <div class="summary">
-        <div>ORDER SUMMARY</div>
+        <div>订单</div>
         <hr style="margin-top:10px; margin-bottom:20px;">
-        <span >Subtotal:</span>
-        <span style="margin-left:131px">$458.00</span>
+        <span >价格:</span>
+        <span style="float:right">${{this.summary}}</span>
         <br>
-        <span >Shopping:</span>
-        <span style="margin-left:124px">$458.00</span>
+        <span >折扣:</span>
+        <span style="float:right">$0</span>
         <hr style="margin-top:30px; margin-bottom:20px;">
-        <span >Total:</span>
-        <span style="margin-left:156px">$458.00</span>
+        <span >您需支付:</span>
+        <span style="float:right">${{this.summary}}</span>
         <div style="margin-top:50px;">
-            <el-checkbox v-model="checked">I have promo code</el-checkbox>
+            <el-checkbox v-model="checked">我已同意隐私政策</el-checkbox>
         </div>
-        <el-button class="check-button" type="danger">CHECK OUT</el-button>
+        <el-button class="check-button" type="danger">支付</el-button>
     </div>
     <div>
         <Footer :ifLogo="true" />
@@ -93,32 +112,63 @@ export default {
         return{
             tableData:[
                 {
+                    id: 1,
                     img: require('../assets/cart1.jpg'),
                     product: 'smart phone',
-                    price: '$299.00',
+                    price: 299.00,
                     number: 1,
-                    total: '$299.00'
                 },
                 {
+                    id: 2,
                     img: require('../assets/cart1.jpg'),
                     product: 'smart phone',
-                    price: '$299.00',
+                    price: 299.00,
                     number: 1,
-                    total: '$299.00'
                 },
                 {
+                    id: 3,
                     img: require('../assets/cart1.jpg'),
                     product: 'smart phone',
-                    price: '$299.00',
+                    price: 299.00,
                     number: 1,
-                    total: '$299.00'
                 }
-            ]
+            ],
+            multipleSelection: [],
+            summary: 0
         }
     },
     methods:{
         handleChange(number){
             this.number = number
+            console.log(this.tableData)
+            this.summary = 0;
+            for(var i in this.tableData){
+                for(var j in this.multipleSelection){
+                    if(this.multipleSelection[j].id === this.tableData[i].id){
+                        this.summary += this.tableData[i].price * this.tableData[i].number
+                    }
+                }
+            }
+        },
+        handleSelectionChange(val){
+            this.multipleSelection = val;
+            this.summary = 0;
+            for(var i in this.tableData){
+                for(var j in this.multipleSelection){
+                    if(this.multipleSelection[j].id === this.tableData[i].id){
+                        this.summary += this.tableData[i].price * this.tableData[i].number
+                    }
+                }
+            }
+        },
+        deleteRow(index, rows) {
+            rows.splice(index, 1);
+        },
+        goShopping(){
+            this.$router.push("/")
+        },
+        deleteAll(){
+            this.tableData=[];
         }
     }
 }
@@ -131,7 +181,7 @@ export default {
 }
 .shop-table{
     box-sizing: border-box;
-    padding: 0 130px;
+    padding: 0 90px;
     min-height: 583px;
     display: inline-block;
     vertical-align: top;
@@ -146,7 +196,7 @@ export default {
     background-color: rgb(246, 246, 246);
 }
 .shop-button{
-    background-color: black;
+    background-color: rgb(12, 39, 60);
     color: white;
     margin-top: 10px;
     font-size: 12px;
@@ -179,6 +229,18 @@ export default {
     border-color: #ff5a5b !important;
 }
 .el-checkbox__inner:focus{
+    border-color: #ff5a5b !important;
+}
+.el-input-number__decrease:hover, .el-input-number__increase:hover{
+    border-color: #ff5a5b !important;
+}
+.el-input-number--mini, .el-input-number .el-input-number__decrease:focus{
+    border-color: #ff5a5b !important;
+}
+.el-input-number--mini .el-input-number__decrease [class*=el-icon], .el-input-number--mini .el-input-number__increase [class*=el-icon]{
+    color: #ff5a5b !important;
+}
+.el-input-number__decrease:hover:not(.is-disabled)~.el-input .el-input__inner:not(.is-disabled), .el-input-number__increase:hover:not(.is-disabled)~.el-input .el-input__inner:not(.is-disabled){
     border-color: #ff5a5b !important;
 }
 </style>

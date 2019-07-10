@@ -4,12 +4,12 @@
             <el-menu class="el-menu-demo menu" background-color="rgb(12, 39, 60)" active-text-color="#ff5a5b" text-color="#fff" mode="horizontal" @select="handleSelect">
                 <span class="title">
                     <img style="margin-right:10px;" src="../assets/Forma.png" />
-                    CATEGOIES
+                    分类
                 </span>
-                <el-menu-item index="1">HOME</el-menu-item>
-                <el-menu-item index="2">SHOP</el-menu-item>
-                <el-menu-item index="3">ABOUT US</el-menu-item>
-                <span class="header-login">LOGIN IN</span>
+                <el-menu-item style="font-size: 18px;" index="1">主页</el-menu-item>
+                <el-menu-item style="font-size: 18px;" index="2">购物车</el-menu-item>
+                <el-menu-item style="font-size: 18px;" index="3">关于我们</el-menu-item>
+                <span class="header-login">登录</span>
             </el-menu>
         </div>
     </div>
@@ -59,6 +59,7 @@ export default {
 }
 .menu{
     font-weight: bold;
+    font-size: 18px;
 }
 .header-login{
     float: right;
