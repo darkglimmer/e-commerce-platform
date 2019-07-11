@@ -1,5 +1,8 @@
 <template>
     <div class="detail">
+        <div>
+            <Header :ifLogin="this.ifLogin" />
+        </div>
         <ProductCard :productId="this.id" :name="this.name" :num="this.num" :price="this.price" :desc="this.desc" :imagUrl="this.imagUrl"></ProductCard>
         <Information></Information>
         <div class="detail-footer">
@@ -11,6 +14,7 @@
 <script>
 import ProductCard from '@/components/Card.vue'
 import Information from '@/components/Information.vue'
+import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
@@ -18,6 +22,7 @@ export default {
     components: {
         ProductCard,
         Information,
+        Header,
         Footer
     },
     data(){
@@ -27,10 +32,14 @@ export default {
             num: 0,
             price: 0,
             desc: '',
-            imagUrl: ''
+            imagUrl: '',
+            ifLogin: false
         }
     },
     mounted(){
+         if(window.localStorage.getItem("userID")){
+             this.ifLogin=true;
+         }
          this.id = this.$route.params.id
          fetch(`/api/ProductServlet?action=seek&ID=${this.id}`, {
           method: 'GET',

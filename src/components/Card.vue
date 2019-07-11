@@ -93,14 +93,11 @@ export default {
             },
             body: JSON.stringify(data)
           }).then(res => {
-            // if (res.ok){
-            //     this.$message({
-            //       message: '添加成功，请前往购物车查看',
-            //       type: 'success'
-            //     });
-            // }else{
-            //    this.$message('添加失败，请检查网络重新尝试');
-            // }
+            if (res.ok){
+               window.alert("添加成功，请前往购物车查看")
+            }else{
+               window.alert('添加失败，请检查网络重新尝试')
+            }
           })
         }
   }

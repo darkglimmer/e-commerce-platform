@@ -1,32 +1,12 @@
 <template>
   <div id="app">
-    <Header :ifLogin="this.ifLogin" />
     <router-view/>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
 
 export default {
-  components: {
-    Header
-  },
-  data(){
-    return{
-      ifLogin :false
-    }
-  },
-  mounted(){
-    if(window.localStorage.getItem("userID")){
-        this.ifLogin = true;
-    }
-  },
-  updated(){
-    if(window.localStorage.getItem("userID")){
-        this.ifLogin = true;
-    }
-  },
   name: 'app'
 }
 </script>

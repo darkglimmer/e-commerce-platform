@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <div>
+      <Header :ifLogin="this.ifLogin" />
+    </div>
     <div class="category-and-banner">
       <div class="category-list">
         <div class="menu">
@@ -106,6 +109,7 @@
 <script>
 import Classify from "../components/Classify"
 import Note from "../components/Note"
+import Header from "../components/Header"
 import Footer from "../components/Footer"
 
 export default {
@@ -113,7 +117,8 @@ export default {
   components:{
     Classify,
     Note,
-    Footer
+    Footer,
+    Header
   },
   data(){
       return {
@@ -125,10 +130,13 @@ export default {
         category: "Daily Life Life Life",
         active: 1,
         ifLogin: false,
-        notes: []
+        notes: [],
       }
   },
   mounted(){
+     if(window.localStorage.getItem("userID")){
+       this.ifLogin = true;
+     }
      fetch(`/api/ProductServlet?action=showAll`, {
           method: 'GET',
           headers: {

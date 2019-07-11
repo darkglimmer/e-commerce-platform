@@ -1,5 +1,8 @@
 <template>
   <div class="shop">
+      <div>
+          <Header :ifLogin="true" />
+      </div>
     <div class="shop-table">
         <el-table
         ref="multipleTable"
@@ -65,7 +68,7 @@
             width="55">
             <template slot-scope="scope">
                <el-button
-                    @click.native.prevent="deleteRow(scope.$index, tableData)"
+                    @click.native.prevent="deleteRow(scope.$index,tableData, scope.row)"
                     type="text"
                     size="small">
                 ✖️
@@ -76,7 +79,7 @@
         <div>
             <el-button class="shop-button" type="info" round @click="goShopping">继续购物</el-button>
             <el-button class="shop-button" type="info" style="margin-left:550px" round @click="deleteAll">清空购物车</el-button> 
-            <el-button class="shop-button" type="info" round>刷新购物车</el-button>
+            <el-button class="shop-button" type="info" round @click="getShoppingCart">刷新购物车</el-button>
         </div>
     </div>
     <div class="summary">
@@ -104,8 +107,7 @@
             <el-button type="danger" round @click.native="chooseAddress(false)">新建地址信息</el-button>
         </div>
     </div>
-
-    <div>
+    <div style="margin-top: 30px">
         <Footer :ifLogo="true" />
     </div>
   </div>
@@ -113,13 +115,15 @@
 
 <script>
 import Footer from "../components/Footer"
+import Header from "../components/Header"
 import AddressSelection from '@/components/AddressSelection.vue'
 
 export default {
     name: "shoppingCart",
     components:{
         Footer,
-        AddressSelection
+        AddressSelection,
+        Header
     },
     data(){
         return{
@@ -128,22 +132,28 @@ export default {
             tableData:[],
             multipleSelection: [],
             summary: 0,
+            ifLogin: true
         }
     },
     mounted(){
         const User = window.localStorage.getItem("userID")
-        fetch(`/api/shop?action=getShopCar&userId=${User}`, {
-            method: 'GET',
-            headers: {
-                "Content-Type":"application/json",
-            },
-        }).then(res => {
-            if (res.ok){
-                return res.json();
-            }
-        }).then(res => {
-            this.tableData = res.body
-        })
+        if(User === null){
+            this.$router.push("/login")
+        }
+        else{
+            fetch(`/api/shop?action=getShopCar&userId=${User}`, {
+                method: 'GET',
+                headers: {
+                    "Content-Type":"application/json",
+                },
+            }).then(res => {
+                if (res.ok){
+                    return res.json();
+                }
+            }).then(res => {
+                this.tableData = res.body
+            })
+        }
     },
     methods:{
         getShoppingCart(){
@@ -184,14 +194,37 @@ export default {
                 }
             }
         },
-        deleteRow(index, rows) {
-            rows.splice(index, 1);
+        deleteRow(index, rows, row) {
+            const User = window.localStorage.getItem("userID")
+            // rows.splice(index, 1);
+            fetch(`/api/shop?action=delete&pId=${row.id}&uId=${User}`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type":"application/json",
+                },
+            }).then(res => {
+                if (res.ok){
+                    this.getShoppingCart()
+                }
+            })
         },
         goShopping(){
             this.$router.push("/")
         },
         deleteAll(){
-            this.tableData=[];
+            const User = window.localStorage.getItem("userID")
+            for(var i in this.tableData){
+                fetch(`/api/shop?action=delete&pId=${this.tableData[i].id}&uId=${User}`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type":"application/json",
+                    },
+                }).then(res => {
+                    if (res.ok){
+                        this.tableData=[];
+                    }
+                })
+            }
         },
         chooseAddress(v) {
             if (v) {

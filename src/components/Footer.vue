@@ -15,7 +15,7 @@
 <script>
 
 export default {
-  name: 'Header',
+  name: 'Footer',
   props:{
     ifLogo: Boolean
   },
