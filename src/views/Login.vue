@@ -1,5 +1,8 @@
 <template>
 <div class="background">
+    <div>
+        <Header :ifLogin="this.ifLogin" />
+    </div>
     <div class="login">
         <div class="login-img">
             <img style="width: 320px" src="../assets/regimg.png" />
@@ -21,17 +24,20 @@
 </template>
 
 <script>
+import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'Login',
   components: {
     Footer,
+    Header
   },
   data(){
     return {
         account: '',
-        password:''
+        password:'',
+        ifLogin: false
     }
   },
   methods:{

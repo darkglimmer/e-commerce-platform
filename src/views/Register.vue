@@ -1,5 +1,8 @@
 <template>
 <div class="background">
+    <div>
+        <Header :ifLogin="false" />
+    </div>
     <div class="login">
         <div class="login-card">
             <div class="login-card-title">Welcome to register</div>
@@ -41,11 +44,13 @@
 
 <script>
 import Footer from '@/components/Footer.vue'
+import Header from '@/components/Header.vue'
 
 export default {
   name: 'register',
   components: {
-    Footer
+    Footer,
+    Header
   },
   data(){
     return {
