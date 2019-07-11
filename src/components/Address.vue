@@ -1,5 +1,4 @@
 <template>
-
     <div class="address-card">
         <div class="address-card-icon">
             <div class="address-card-icon-inside">
@@ -51,7 +50,6 @@ export default {
 .address-card{
     height: 200px;
     width: 800px;
-    margin-left: 30px;
 }
 .address-card-icon{
     display: inline-block;
@@ -60,9 +58,9 @@ export default {
     border-right: 4px dashed rgb(255, 0, 0, .04);
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-
     vertical-align: top;
     vertical-align: bottom;
+    background-color: white;
 }
 .address-card-content{
     display: inline-block;
@@ -72,7 +70,7 @@ export default {
     border-left: 4px dashed rgb(255, 0, 0, .04);
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-
+    background-color: white;
     vertical-align: top;
     vertical-align: bottom;
 }
