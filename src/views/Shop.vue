@@ -53,7 +53,7 @@
             label="数量"
             width="180">
             <template slot-scope="scope">
-                <el-input-number v-model="scope.row.num" size="mini" width="50px" @change="handleChange(scope.row.num)" :min="1"></el-input-number>
+                <el-input-number v-model="scope.row.num" size="mini" width="50px" @change="handleChange(scope.row,scope.row.num)" :min="1"></el-input-number>
             </template>
         </el-table-column>
          <el-table-column
@@ -96,14 +96,30 @@
         <div style="margin-top:50px;">
             <el-checkbox v-model="checked">我已同意隐私政策</el-checkbox>
         </div>
-        <el-button class="check-button" type="danger" @click.native="chooseAddress(true)">支付</el-button>
+        <el-button class="check-button" v-if="!this.active" type="danger" @click="chooseAddress">填写地址信息</el-button>
+        <el-button class="check-button" v-if="this.active" type="danger" @click="order">确认支付</el-button>
     </div>
     <div class="pop-container" v-if="this.pop">
         <div class="address-selection">
-            <AddressSelection></AddressSelection>
+                <div class="address">
+                    <div>
+                        <Address style="margin: 10px;" v-for="address in addresses" 
+                                :nickname="address.name"
+                                :postcode="address.postcode"
+                                :phone="address.phone"
+                                :province="address.province"
+                                :city="address.city"
+                                :country="address.country"
+                                :street="address.street"
+                                :address="address.address"
+                                :ifPick="chargePick(address.id)"
+                                @click.native="whetherPick(address.id)">
+                        </Address>
+                    </div>
+                </div>
         </div>
-        <div style="margin-top: 50px; margin-left: 630px;">
-            <el-button type="danger" round @click.native="chooseAddress(false)">选择地址信息</el-button>
+        <div style="margin-top: 50px; margin-left: 620px;">
+            <el-button type="danger" round @click.native="toOrder">确认为选中地址</el-button>
             <el-button type="danger" round @click.native="chooseAddress(false)">新建地址信息</el-button>
         </div>
     </div>
@@ -116,13 +132,14 @@
 <script>
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import AddressSelection from '@/components/AddressSelection.vue'
+import Address from '@/components/Address.vue'
+import { win32 } from 'path';
 
 export default {
     name: "shoppingCart",
     components:{
         Footer,
-        AddressSelection,
+        Address,
         Header
     },
     data(){
@@ -132,7 +149,9 @@ export default {
             tableData:[],
             multipleSelection: [],
             summary: 0,
-            ifLogin: true
+            ifLogin: true,
+            active: null,
+            addresses: [],
         }
     },
     mounted(){
@@ -156,6 +175,21 @@ export default {
         }
     },
     methods:{
+         getAddress(){
+            var User = window.localStorage.getItem("userID")
+            fetch(`/api/Receiver?userId=${User}`, {
+                method: 'GET',
+                headers: {
+                    "Content-Type":"application/json",
+                },
+                }).then(res => {
+                if (res.ok){
+                    return res.json();
+                }
+                }).then(res => {
+                    this.addresses = res.body
+            })
+        },
         getShoppingCart(){
             const User = window.localStorage.getItem("userID")
             fetch(`/api/shop?action=getShopCar&userId=${User}`, {
@@ -171,17 +205,34 @@ export default {
                     this.tableData = res.body
             })
         },
-        handleChange(num){
+        handleChange(row,num){
+            var User = window.localStorage.getItem("userID")
             this.num = num
-            console.log(this.tableData)
+            const data = {
+                "productId": row.id,
+                "userId": User,
+                "number": num
+            }
+            fetch(`/api/shop?action=update`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type":"application/json",
+                    },
+                    body: JSON.stringify(data)
+                }).then(res => {
+                    if (res.ok){
+                    }
+            })
             this.summary = 0;
             for(var i in this.tableData){
                 for(var j in this.multipleSelection){
                     if(this.multipleSelection[j].id === this.tableData[i].id){
-                        this.summary += this.tableData[i].price * this.tableData[i].num
+                        this.multipleSelection[j].num = this.tableData[i].num
+                        this.summary += this.multipleSelection[i].price * this.multipleSelection[i].num
                     }
                 }
             }
+
         },
         handleSelectionChange(val){
             this.multipleSelection = val;
@@ -189,14 +240,14 @@ export default {
             for(var i in this.tableData){
                 for(var j in this.multipleSelection){
                     if(this.multipleSelection[j].id === this.tableData[i].id){
-                        this.summary += this.tableData[i].price * this.tableData[i].num
+                        this.multipleSelection[j].num = this.tableData[i].num
+                        this.summary += this.multipleSelection[i].price * this.multipleSelection[i].num
                     }
                 }
             }
         },
         deleteRow(index, rows, row) {
             const User = window.localStorage.getItem("userID")
-            // rows.splice(index, 1);
             fetch(`/api/shop?action=delete&pId=${row.id}&uId=${User}`, {
                 method: 'POST',
                 headers: {
@@ -226,14 +277,61 @@ export default {
                 })
             }
         },
-        chooseAddress(v) {
-            if (v) {
-                if (!this.checked) {
-                    window.alert("请先同意用户隐私政策！")
-                    return
+        chooseAddress(){
+            if (!this.checked) {
+                window.alert("请先同意用户隐私政策！")
+                return
+            }
+            if(!this.summary){
+                window.alert("请先选择商品！")
+                return
+            }
+            this.pop = true
+            this.getAddress()
+        },
+        toOrder(){
+            this.pop = false
+        },
+        order(){
+            var productId = []
+            var nums = []
+            const User = window.localStorage.getItem("userID")
+            for(var i in this.multipleSelection){
+                productId.push(this.multipleSelection[i].id)
+                nums.push(this.multipleSelection[i].num)
+            }
+            const data = {
+                "productId": productId,
+                "nums": nums,
+                "sumPrice": this.summary,
+                "userId": User,
+                "addressId": this.active, 
+                "orderId": 0
+            }
+            fetch(`/api/order`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify(data)
+            }).then(res => {
+                if (res.ok){
+                    this.active = null
+                    console.log(this.active)
+                    window.alert('提交订单成功！')
+                    this.$router.go(0)
                 }
-            } 
-            this.pop = v
+            })
+        },
+        chargePick(id){
+            if(this.active === id){
+                return true
+            }else{
+                return false
+            }
+        },
+        whetherPick(id){ 
+            this.active = id
         }
     }
 }
@@ -286,6 +384,9 @@ export default {
     margin-top: 100px;
     width: 800px;
     border-radius: 10px;
+}
+.address{
+    width: 880px;
 }
 </style>
 

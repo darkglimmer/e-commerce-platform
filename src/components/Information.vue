@@ -29,7 +29,7 @@ export default {
     }
 };
 </script>
-<style>
+<style scoped>
 .information{
     margin-top: 120px;
 }
@@ -38,6 +38,9 @@ export default {
     margin-left: 30px;
     color: red;
 }
+</style>
+
+<style>
 .el-tabs__item.is-top{
     color: black !important;
     background-color: whitesmoke;

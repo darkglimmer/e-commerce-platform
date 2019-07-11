@@ -1,6 +1,7 @@
 <template>
     <div class="address-card">
-        <div class="address-card-icon">
+        <!-- <div class="address-card-icon"> -->
+        <div :class="ifPick ? 'address-card-icon' : 'noaddress-card-icon'">
             <div class="address-card-icon-inside">
                 <img src="../assets/address.png" style="margin-left: 30px; margin-top: 10px; height: 88px; width: 88px;">
             </div>
@@ -8,7 +9,8 @@
                 <span style="font-size: 20px; line-height: 50px; margin-left: 10px;">:{{this.nickname}}</span>
             </div>
         </div>
-        <div class="address-card-content">
+        <!-- <div class="address-card-content"> -->
+        <div :class="ifPick ? 'address-card-content' : 'noaddress-card-content'">
             <div class="address-postcode">
                 <span style="font-size: 30px; line-height: 50px; font-weight: bold;">{{this.postcode}}</span>
             </div>
@@ -39,6 +41,7 @@ export default {
         country: String,
         street: String,
         address: String,
+        ifPick: Boolean
     },
     methods: {
 
@@ -46,7 +49,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .address-card{
     height: 200px;
     width: 800px;
@@ -62,6 +65,17 @@ export default {
     vertical-align: bottom;
     background-color: white;
 }
+.noaddress-card-icon{
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    border-right: 4px dashed rgb(255, 0, 0, .04);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    vertical-align: top;
+    vertical-align: bottom;
+    background-color: rgb(231, 231, 231);
+}
 .address-card-content{
     display: inline-block;
     height: 200px;
@@ -71,6 +85,18 @@ export default {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
     background-color: white;
+    vertical-align: top;
+    vertical-align: bottom;
+}
+.noaddress-card-content{
+    display: inline-block;
+    height: 200px;
+    margin-left: 10px;
+    width: 582px;
+    border-left: 4px dashed rgb(255, 0, 0, .04);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    background-color: rgb(231, 231, 231);
     vertical-align: top;
     vertical-align: bottom;
 }

@@ -104,7 +104,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .card-productNote{
   height: 400px;
 }

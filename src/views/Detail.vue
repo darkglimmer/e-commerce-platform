@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .detail{
     margin-top: 180px;
 }

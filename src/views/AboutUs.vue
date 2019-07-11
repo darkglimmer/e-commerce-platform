@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .about-us{
     margin: 0 auto;
     width: 1400px;

@@ -174,7 +174,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .home{
     padding-top: 60px;
   }
@@ -237,6 +237,8 @@ export default {
   .category-and-banner{
     vertical-align: top;
   }
+  </style>
+  <style>
   .el-menu__title{
     width: 270px !important;
     height: 80px !important;
