@@ -50,7 +50,7 @@ export default new Router({
       component: Address
     },
     {
-      path: '/aboutus',
+      path: '/aboutUs',
       name: 'AboutUs',
       component: AboutUs
     }

@@ -1,5 +1,8 @@
 <template>
     <div class="about-us">
+        <div>
+            <Header :ifLogin="this.ifLogin" />
+        </div>
         <div class="about-us-title">
             <span class="about-us-title-span">About Us</span>
         </div>
@@ -54,16 +57,21 @@
 </template>
 
 <script>
+import Header from "../components/Header"
 export default {
     name: "AboutUs",
-    data() {
-
+    data(){
+        return{
+            ifLogin: false
+        }
     },
-    methods: {
-
+    components:{
+        Header
     },
-    props: {
-
+    mounted(){
+        if(window.localStorage.getItem("userID")){
+            this.ifLogin = true
+        }
     }
 }
 </script>

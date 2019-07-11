@@ -31,6 +31,9 @@ export default {
           if(key == 2){
               this.$router.push("/shoppingCart");
           }
+          if(key == 3){
+              this.$router.push("/aboutUs");
+          }
       },
       login(){
            this.$router.push("/login");
