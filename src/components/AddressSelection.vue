@@ -1,26 +1,13 @@
 <template>
     <div class="address">
-        <el-collapse v-model="this.activeName" accordion>
-            <el-collapse-item title="王鹏宇是梅西" name="1">
-                <div><Address :nickname="this.addresses[0].name"
-                            :postcode="this.addresses[0].postcode"
-                            :phone="this.addresses[0].phone"
-                            :province="this.addresses[0].province"
-                            :city="this.addresses[0].city"
-                            :country="this.addresses[0].country"
-                            :street="this.addresses[0].street"
-                            :address="this.addresses[0].address"></Address></div>
-            </el-collapse-item>
-            <el-collapse-item title="王鹏宇不是梅西" name="2">
-                <div><Address></Address></div>
-            </el-collapse-item>
-            <el-collapse-item title="王鹏宇竟然不是梅西" name="3">
-                <div><Address></Address></div>
-            </el-collapse-item>
-            <el-collapse-item title="王鹏宇是梅西吗？" name="4">
-                <div><Address></Address></div>
-            </el-collapse-item>
-        </el-collapse>
+        <div><Address :nickname="this.addresses[0].name"
+                    :postcode="this.addresses[0].postcode"
+                    :phone="this.addresses[0].phone"
+                    :province="this.addresses[0].province"
+                    :city="this.addresses[0].city"
+                    :country="this.addresses[0].country"
+                    :street="this.addresses[0].street"
+                    :address="this.addresses[0].address"></Address></div>
     </div>
 </template>
 

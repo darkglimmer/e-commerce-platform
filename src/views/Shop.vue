@@ -41,7 +41,7 @@
             align="center"
             width="100">
         <template slot-scope="scope">
-            ${{scope.row.price}}
+            ${{(scope.row.price).toFixed(2)}}
           </template>
         </el-table-column>
         <el-table-column
@@ -58,7 +58,7 @@
             label="总价"
             width="100">
          <template slot-scope="scope">
-            ${{scope.row.num * scope.row.price}}
+            ${{(scope.row.num * scope.row.price).toFixed(2)}}
           </template>
         </el-table-column>
           <el-table-column
@@ -83,13 +83,13 @@
         <div>订单</div>
         <hr style="margin-top:10px; margin-bottom:20px;">
         <span >价格:</span>
-        <span style="float:right">${{this.summary}}</span>
+        <span style="float:right">${{(this.summary).toFixed(2)}}</span>
         <br>
         <span >折扣:</span>
         <span style="float:right">$0</span>
         <hr style="margin-top:30px; margin-bottom:20px;">
         <span >您需支付:</span>
-        <span style="float:right">${{this.summary}}</span>
+        <span style="float:right">${{(this.summary).toFixed(2)}}</span>
         <div style="margin-top:50px;">
             <el-checkbox v-model="checked">我已同意隐私政策</el-checkbox>
         </div>
@@ -99,8 +99,9 @@
         <div class="address-selection">
             <AddressSelection></AddressSelection>
         </div>
-        <div style="margin-top: 50px; margin-left: 700px;">
+        <div style="margin-top: 50px; margin-left: 630px;">
             <el-button type="danger" round @click.native="chooseAddress(false)">选择地址信息</el-button>
+            <el-button type="danger" round @click.native="chooseAddress(false)">新建地址信息</el-button>
         </div>
     </div>
 
