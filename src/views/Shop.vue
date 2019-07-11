@@ -282,7 +282,7 @@ export default {
     z-index: 9999;
 }
 .address-selection{
-    margin-left: 350px;
+    margin-left: 320px;
     margin-top: 100px;
     width: 800px;
     border-radius: 10px;
