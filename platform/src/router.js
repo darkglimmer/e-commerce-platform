@@ -6,7 +6,7 @@ import Register from './views/Register.vue'
 import TestDetail from './views/Detail.vue'
 import ShoppingCart from './views/Shop.vue'
 import AboutUs from './views/AboutUs.vue'
-import AddressTest from './views/AddressTest.vue'
+import Order from './views/order.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -45,14 +45,14 @@ export default new Router({
       component: ShoppingCart
     },
     {
+      path: '/order',
+      name: 'order',
+      component: Order
+    },
+    {
       path: '/aboutUs',
       name: 'AboutUs',
       component: AboutUs
-    },
-    {
-      path: '/address',
-      name: 'Address',
-      component: AddressTest
     }
   ]
 })

@@ -89,7 +89,7 @@
         <span style="float:right">${{(this.summary).toFixed(2)}}</span>
         <br>
         <span >折扣:</span>
-        <span style="float:right">$0</span>
+        <span style="float:right">$0.00</span>
         <hr style="margin-top:30px; margin-bottom:20px;">
         <span >您需支付:</span>
         <span style="float:right">${{(this.summary).toFixed(2)}}</span>
@@ -306,7 +306,6 @@ export default {
                 "sumPrice": this.summary,
                 "userId": User,
                 "addressId": this.active, 
-                "orderId": 0
             }
             fetch(`/api/order`, {
                 method: 'POST',
