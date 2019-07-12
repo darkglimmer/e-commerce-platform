@@ -1,7 +1,7 @@
 <template>
-  <div style="padding: 60px 0">
+  <div style="padding: 80px 0">
       <div>
-        <el-button @click="back"  class="back-button">返回首页</el-button>
+          <Header :ifLogin="this.ifLogin" />
       </div>
       <Card v-for="order in this.tableData" 
             :name="order.receiver.name"
@@ -21,19 +21,28 @@
 </template>
 
 <script>
+  import Header from "../components/Header"
   import Card from "../components/orderCard"
   export default {
     name: 'order',
     components:{
-        Card
+        Card,
+        Header
     },
     data() {
       return {
-        tableData: []
+        tableData: [],
+        ifLogin: true
       }
     },
     mounted() {
-      this.showAllOrder()
+         const User = window.localStorage.getItem("userID")
+        if(User === null){
+            this.$router.push("/login")
+        }
+        else{
+            this.showAllOrder()
+        }
     },
     methods: {
         back(){
@@ -58,7 +67,4 @@
 </script>
 
 <style scoped>
-.back-button{
-    margin-left: 650px;
-}
 </style>

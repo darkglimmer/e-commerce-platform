@@ -7,8 +7,9 @@
                     分类
                 </span>
                 <el-menu-item style="font-size: 18px;" index="1">主页</el-menu-item>
-                <el-menu-item style="font-size: 18px;" index="2">购物车</el-menu-item>
-                <el-menu-item style="font-size: 18px;" index="3">关于我们</el-menu-item>
+                <el-menu-item style="font-size: 18px;" index="2">我的购物车</el-menu-item>
+                <el-menu-item style="font-size: 18px;" index="3">我的订单</el-menu-item>
+                <el-menu-item style="font-size: 18px;" index="4">关于我们</el-menu-item>
                 <span v-if="!this.ifLogin" @click="login" class="header-login">登录</span>
                 <span v-if="this.ifLogin" @click="logout" class="header-login">退出</span>
             </el-menu>
@@ -32,6 +33,9 @@ export default {
               this.$router.push("/shoppingCart");
           }
           if(key == 3){
+              this.$router.push("/order")
+          }
+          if(key == 4){
               this.$router.push("/aboutUs");
           }
       },
@@ -59,7 +63,7 @@ export default {
 }
 .title{
     background-color: #ff5a5b;
-    width: 250px;
+    width: 200px;
     float: left;
     text-align: center;
     color: white;
@@ -81,7 +85,7 @@ export default {
 </style>
 <style>
 .el-menu-item{
-    width: 250px;
+    width: 200px;
     text-align: center;
     border: 0;
 }
