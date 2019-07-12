@@ -317,9 +317,19 @@ export default {
             }).then(res => {
                 if (res.ok){
                     this.active = null
-                    console.log(this.active)
                     window.alert('提交订单成功！')
-                    this.$router.go(0)
+                     for(var i in productId){
+                        fetch(`/api/shop?action=delete&pId=${productId[i]}&uId=${User}`, {
+                            method: 'POST',
+                            headers: {
+                                "Content-Type":"application/json",
+                            },
+                        }).then(res => {
+                            if (res.ok){
+                                this.$router.go(0)
+                            }
+                        })
+                    }
                 }
             })
         },
