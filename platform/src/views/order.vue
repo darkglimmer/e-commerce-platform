@@ -61,7 +61,7 @@
                     return res.json();
                 }
                 }).then(res => {
-                    this.tableData = res
+                    this.tableData = res.reverse()
             })
         }
     }
