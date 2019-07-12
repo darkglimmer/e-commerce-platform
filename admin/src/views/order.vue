@@ -50,7 +50,7 @@
                     return res.json();
                 }
                 }).then(res => {
-                    this.tableData = res.reverse()
+                    this.tableData = res
             })
         }
     }
