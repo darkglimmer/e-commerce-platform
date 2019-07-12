@@ -14,20 +14,22 @@
             :street="order.receiver.street"
             :products="order.products"
             :sum="order.sum" />
-    <div>
-        
+    <div style="margin-top: 30px">
+      <Footer :ifLogo="true" />
     </div>
   </div>
 </template>
 
 <script>
   import Header from "../components/Header"
+  import Footer from "../components/Header"
   import Card from "../components/orderCard"
   export default {
     name: 'order',
     components:{
         Card,
-        Header
+        Header,
+        Footer
     },
     data() {
       return {
@@ -59,7 +61,7 @@
                     return res.json();
                 }
                 }).then(res => {
-                    this.tableData = res.reverse()
+                    this.tableData = res
             })
         }
     }

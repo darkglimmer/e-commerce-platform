@@ -96,12 +96,22 @@
         <div style="margin-top:50px;">
             <el-checkbox v-model="checked">我已同意隐私政策</el-checkbox>
         </div>
-        <el-button class="check-button" v-if="!this.active" type="danger" @click="chooseAddress">填写地址信息</el-button>
-        <el-button class="check-button" v-if="this.active" type="danger" @click="order">确认支付</el-button>
+        <div style="margin-top: 20px;" v-if="!this.active">
+            <el-button class="choice-check-button" type="danger" @click="chooseAddress">已有地址</el-button>
+            <el-button class="choice-check-button" type="danger" @click="newOneAdd">新建地址</el-button>
+        </div>
+        <div style="margin-top: 20px;" v-if="this.active">
+            <el-button class="choice-check-button" type="danger" @click="order">确认支付</el-button>
+            <el-button class="choice-check-button" type="danger" @click="noOrder">取消支付</el-button>
+        </div>
     </div>
     <div class="pop-container" v-if="this.pop">
         <div class="address-selection">
                 <div class="address">
+                    <!-- <div>
+                        <AddressInput style="margin: 10px;"></AddressInput>
+                        <el-button style="margin-left:400px" type="danger" round @click.native="newOneAdd">添加地址</el-button>
+                    </div> -->
                     <div>
                         <Address style="margin: 10px;" v-for="address in addresses" 
                                 :nickname="address.name"
@@ -117,15 +127,28 @@
                         </Address>
                     </div>
                 </div>
+            </div>
+             <div style="margin:20px 0 20px 650px;">
+                <el-button type="danger" round @click.native="toOrder">确认为选中地址</el-button>
+                <el-button type="danger" round @click.native="toOrder">取消</el-button>
+            </div>
         </div>
-        <div style="margin-top: 50px; margin-left: 620px;">
-            <el-button type="danger" round @click.native="toOrder">确认为选中地址</el-button>
-            <el-button type="danger" round @click.native="chooseAddress(false)">新建地址信息</el-button>
+         <div class="pop-container" v-if="this.newAdd">
+        <div class="address-selection">
+                <div class="address">
+                    <div>
+                        <AddressInput style="margin: 10px;"></AddressInput>
+                    </div>
+                </div>
+            </div>
+             <div style="margin:20px 0 20px 650px;">
+                <el-button type="danger" round @click.native="decideAdd">添加地址</el-button>
+                <el-button type="danger" round @click.native="cancelAdd">取消</el-button>
+            </div>
         </div>
-    </div>
-    <div style="margin-top: 30px">
-        <Footer :ifLogo="true" />
-    </div>
+        <div style="margin-top: 30px">
+            <Footer :ifLogo="true" />
+        </div>
   </div>
 </template>
 
@@ -133,14 +156,15 @@
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Address from '@/components/Address.vue'
-import { win32 } from 'path';
+import AddressInput from '@/components/AddressInput.vue'
 
 export default {
     name: "shoppingCart",
     components:{
         Footer,
         Address,
-        Header
+        Header,
+        AddressInput
     },
     data(){
         return{
@@ -152,6 +176,7 @@ export default {
             ifLogin: true,
             active: null,
             addresses: [],
+            newAdd: false,
         }
     },
     mounted(){
@@ -341,6 +366,18 @@ export default {
         },
         whetherPick(id){ 
             this.active = id
+        },
+        newOneAdd(){
+            this.newAdd = true
+        },
+        cancelAdd(){
+            this.newAdd = false
+        },
+        noOrder(){
+            this.$router.go(0)
+        },
+        decideAdd(){
+
         }
     }
 }
@@ -378,6 +415,11 @@ export default {
     height: 50px;
     border-radius: 30px;
     margin-top: 20px;
+}
+.choice-check-button{
+    width: 120px;
+    height: 50px;
+    border-radius: 30px;
 }
 .pop-container{
     position: fixed;
