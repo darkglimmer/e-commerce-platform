@@ -53,6 +53,32 @@
                 <img src="../assets/cxk.jpg" height="300px" width="300px;">
             </div>
         </div>
+        <div class="about-us-wpy">
+            <div class="wpy-img-1"></div>
+                <img src="../assets/wpy1.jpg" height="300px" width="300px;">
+            <div class="wpy-text">
+                <p style="text-align: center;">
+                    <span style="font-size: 40px; font-weight: bold; line-height: 300px;">←我们的组长王梅西→</span>
+                </p>                
+            </div>
+            <div class="wpy-img-2">
+                <img src="../assets/wpy2.jpg" height="300px" width="300px;">
+            </div>
+        </div>
+        <div class="about-us-yaoshuige">
+            <div class="yaoshuige-img">
+                <img src="../assets/yaoshuige1.jpg" height="300px" width="300px;">
+            </div>
+            <div class="yaoshuige-img">
+                <img src="../assets/yaoshuige2.jpg" height="300px" width="300px;">
+            </div>
+            <div class="yaoshuige-img">
+                <img src="../assets/yaoshuige3.jpg" height="300px" width="300px;">
+            </div>
+            <div class="yaoshuige-img">
+                <img src="../assets/yaoshuige4.jpg" height="300px" width="300px;">
+            </div>
+        </div>
     </div>
 </template>
 
@@ -153,5 +179,56 @@ export default {
     vertical-align: top;
     vertical-align: bottom;
     height: 300px;
+}
+.about-us-wpy{
+    width: 1400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: #f2f2f2;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .12), 0 0 60px rgba(0, 0, 0, .04);
+    border-radius: 20px;    
+    vertical-align: top;
+    vertical-align: bottom;
+}
+.wpy-text{
+    display: inline-block;
+    width: 650px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .12), 0 0 60px rgba(0, 0, 0, .04);
+    border-radius: 20px;    
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    vertical-align: top;
+    vertical-align: bottom;
+    height: 300px;
+}
+.wpy-img-1{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+
+}
+.wpy-img-2{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+.yaoshuige-img{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+.about-us-yaoshuige{
+    width: 1400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: #f2f2f2;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .12), 0 0 60px rgba(0, 0, 0, .04);
+    border-radius: 20px;    
+    vertical-align: top;
+    vertical-align: bottom;
 }
 </style>
