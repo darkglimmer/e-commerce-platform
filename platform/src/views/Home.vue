@@ -45,14 +45,14 @@
       <div class="banner">
         <el-carousel height="504px">
           <el-carousel-item v-for="item in imgList" :key="item">
-            <img :src="item.url" height="504px" width="1005px"/>
+            <img :src="item.url" height="504px" width="1050px"/>
           </el-carousel-item>
         </el-carousel>
       </div>  
     </div>
-    <div id="abc" class="product-title">
+    <!-- <div id="abc" class="product-title">
       <img src="../assets/header.png" />
-    </div>
+    </div> -->
     <div class="shopping-notes">
         <Note class="notes" v-for="note in notes" :imagUrl="note.imagUrl" :key="note.id" :id="note.id" :name="note.name" :desc="note.desc" :price="note.price"></Note>   
     </div>
@@ -179,13 +179,11 @@ export default {
     padding-top: 60px;
   }
   .banner{
-    /* margin-left: 500px; */
     display: inline-block;
     vertical-align: top;
-    /* margin-left: 490px; */
     margin-top: 0px;
     font-size: 0;
-    width:1005px;
+    width:1050px;
   }
   .middle{
     margin-top:100px;
@@ -217,12 +215,12 @@ export default {
     text-align: center;
   }
   .product-title{
-    width: 650px;
+    width: 530px;
     margin: 60px auto 20px auto;
   }
   .shopping-notes{
-    width: 1300px;
-    margin: 0 auto;
+    width: 1350px;
+    margin: 30px auto;
   }
   .notes{
     display: inline-block;
@@ -235,7 +233,8 @@ export default {
     margin-left: 80px;
   }
   .category-and-banner{
-    vertical-align: top;
+    width: 1443px;
+    margin: 0 auto;
   }
   </style>
   <style>

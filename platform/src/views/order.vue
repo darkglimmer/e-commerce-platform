@@ -1,7 +1,7 @@
 <template>
   <div style="padding: 80px 0">
       <div>
-          <Header :ifLogin="this.ifLogin" />
+          <Header :ifLogin="true" />
       </div>
       <Card v-for="order in this.tableData" 
             :name="order.receiver.name"
@@ -14,31 +14,25 @@
             :street="order.receiver.street"
             :products="order.products"
             :sum="order.sum" />
-    <div style="margin-top: 30px">
-      <Footer :ifLogo="true" />
-    </div>
   </div>
 </template>
 
 <script>
   import Header from "../components/Header"
-  import Footer from "../components/Header"
   import Card from "../components/orderCard"
   export default {
     name: 'order',
     components:{
         Card,
         Header,
-        Footer
     },
     data() {
       return {
-        tableData: [],
-        ifLogin: true
+        tableData: []
       }
     },
     mounted() {
-         const User = window.localStorage.getItem("userID")
+        const User = window.localStorage.getItem("userID")
         if(User === null){
             this.$router.push("/login")
         }

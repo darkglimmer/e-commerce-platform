@@ -3,108 +3,110 @@
       <div>
           <Header :ifLogin="true" />
       </div>
-    <div class="shop-table">
-        <el-table
-        ref="multipleTable"
-        @selection-change="handleSelectionChange"
-        :data="tableData"
-        style="width: 850px; background-color:#fdfdfd;"
-        align="center"
-        :header-cell-style="{background:'#fdfdfd'}">
-         <template slot="empty">
-            <div>购物车空空如也～快去购物吧</div>
-        </template>
-        <el-table-column
-            type="selection"
-            width="35">
-        </el-table-column>
-        <el-table-column
-            prop="id"
-            width="90"
+      <div class="shop-container">
+        <div class="shop-table">
+            <el-table
+            ref="multipleTable"
+            @selection-change="handleSelectionChange"
+            :data="tableData"
+            style="width: 850px; background-color:#fdfdfd;"
             align="center"
-            label="商品编号">
-        </el-table-column>
-        <el-table-column
-            prop="imagUrl"
-            width="60"
-            align="center">
-              <template slot-scope="scope">
-                <img :src="scope.row.imagUrl" style="width: 50px;height: 50px">
-              </template>
-        </el-table-column>
-        <el-table-column
-            prop="name"
-            label="商品名称"
-            width="220"
-            align="center">
-        </el-table-column>
-        <el-table-column
-            prop="price"
-            label="价格"
-            align="center"
-            width="100">
-        <template slot-scope="scope">
-            ${{(scope.row.price).toFixed(2)}}
-          </template>
-        </el-table-column>
-        <el-table-column
-            prop="num"
-            align="center"
-            label="数量"
-            width="180">
-            <template slot-scope="scope">
-                <el-input-number v-model="scope.row.num" size="mini" width="50px" @change="handleChange(scope.row,scope.row.num)" :min="1"></el-input-number>
+            :header-cell-style="{background:'#fdfdfd'}">
+            <template slot="empty">
+                <div>购物车空空如也～快去购物吧</div>
             </template>
-        </el-table-column>
-         <el-table-column
-            align="center"
-            label="总价"
-            width="100">
-         <template slot-scope="scope">
-            ${{(scope.row.num * scope.row.price).toFixed(2)}}
-          </template>
-        </el-table-column>
-          <el-table-column
-            width="55">
+            <el-table-column
+                type="selection"
+                width="35">
+            </el-table-column>
+            <el-table-column
+                prop="id"
+                width="90"
+                align="center"
+                label="商品编号">
+            </el-table-column>
+            <el-table-column
+                prop="imagUrl"
+                width="60"
+                align="center">
+                <template slot-scope="scope">
+                    <img :src="scope.row.imagUrl" style="width: 50px;height: 50px">
+                </template>
+            </el-table-column>
+            <el-table-column
+                prop="name"
+                label="商品名称"
+                width="220"
+                align="center">
+            </el-table-column>
+            <el-table-column
+                prop="price"
+                label="价格"
+                align="center"
+                width="100">
             <template slot-scope="scope">
-               <el-button
-                    @click.native.prevent="deleteRow(scope.$index,tableData, scope.row)"
-                    type="text"
-                    size="small">
-                ✖️
-                </el-button>
+                ${{(scope.row.price).toFixed(2)}}
             </template>
-        </el-table-column>
-        </el-table>
-        <div>
-            <el-button class="shop-button" type="info" round @click="goShopping">继续购物</el-button>
-            <el-button class="shop-button" type="info" style="margin-left:550px" round @click="deleteAll">清空购物车</el-button> 
-            <el-button class="shop-button" type="info" round @click="getShoppingCart">刷新购物车</el-button>
+            </el-table-column>
+            <el-table-column
+                prop="num"
+                align="center"
+                label="数量"
+                width="180">
+                <template slot-scope="scope">
+                    <el-input-number v-model="scope.row.num" size="mini" width="50px" @change="handleChange(scope.row,scope.row.num)" :min="1"></el-input-number>
+                </template>
+            </el-table-column>
+            <el-table-column
+                align="center"
+                label="总价"
+                width="100">
+            <template slot-scope="scope">
+                ${{(scope.row.num * scope.row.price).toFixed(2)}}
+            </template>
+            </el-table-column>
+            <el-table-column
+                width="55">
+                <template slot-scope="scope">
+                <el-button
+                        @click.native.prevent="deleteRow(scope.$index,tableData, scope.row)"
+                        type="text"
+                        size="small">
+                    ✖️
+                    </el-button>
+                </template>
+            </el-table-column>
+            </el-table>
+            <div>
+                <el-button class="shop-button" type="info" round @click="goShopping">继续购物</el-button>
+                <el-button class="shop-button" type="info" style="margin-left:550px" round @click="deleteAll">清空购物车</el-button> 
+                <el-button class="shop-button" type="info" round @click="getShoppingCart">刷新购物车</el-button>
+            </div>
         </div>
-    </div>
-    <div class="summary">
-        <div>订单</div>
-        <hr style="margin-top:10px; margin-bottom:20px;">
-        <span >价格:</span>
-        <span style="float:right">${{(this.summary).toFixed(2)}}</span>
-        <br>
-        <span >折扣:</span>
-        <span style="float:right">$0.00</span>
-        <hr style="margin-top:30px; margin-bottom:20px;">
-        <span >您需支付:</span>
-        <span style="float:right">${{(this.summary).toFixed(2)}}</span>
-        <div style="margin-top:50px;">
-            <el-checkbox v-model="checked">我已同意隐私政策</el-checkbox>
+        <div class="summary">
+            <div>订单</div>
+            <hr style="margin-top:10px; margin-bottom:20px;">
+            <span >价格:</span>
+            <span style="float:right">${{(this.summary).toFixed(2)}}</span>
+            <br>
+            <span >折扣:</span>
+            <span style="float:right">$0.00</span>
+            <hr style="margin-top:30px; margin-bottom:20px;">
+            <span >您需支付:</span>
+            <span style="float:right">${{(this.summary).toFixed(2)}}</span>
+            <div style="margin-top:50px;">
+                <el-checkbox v-model="checked">我已同意隐私政策</el-checkbox>
+            </div>
+            <div style="margin-top: 20px;" v-if="!this.active">
+                <el-button class="choice-check-button" type="danger" @click="chooseAddress">已有地址</el-button>
+                <el-button class="choice-check-button" type="danger" @click="newOneAdd">新建地址</el-button>
+            </div>
+            <div style="margin-top: 20px;" v-if="this.active">
+                <el-button class="choice-check-button" type="danger" @click="order">确认支付</el-button>
+                <el-button class="choice-check-button" type="danger" @click="noOrder">取消支付</el-button>
+            </div>
         </div>
-        <div style="margin-top: 20px;" v-if="!this.active">
-            <el-button class="choice-check-button" type="danger" @click="chooseAddress">已有地址</el-button>
-            <el-button class="choice-check-button" type="danger" @click="newOneAdd">新建地址</el-button>
-        </div>
-        <div style="margin-top: 20px;" v-if="this.active">
-            <el-button class="choice-check-button" type="danger" @click="order">确认支付</el-button>
-            <el-button class="choice-check-button" type="danger" @click="noOrder">取消支付</el-button>
-        </div>
-    </div>
+      </div>
     <div class="pop-container" v-if="this.pop">
         <div class="address-selection">
                 <div class="address">
@@ -176,7 +178,7 @@
                 <el-button type="danger" round @click.native="cancelAdd">取消</el-button>
             </div>
         </div>
-        <div style="margin-top: 30px">
+        <div class="login-foot">
             <Footer :ifLogo="true" />
         </div>
   </div>
@@ -289,7 +291,8 @@ export default {
                 for(var j in this.multipleSelection){
                     if(this.multipleSelection[j].id === this.tableData[i].id){
                         this.multipleSelection[j].num = this.tableData[i].num
-                        this.summary += this.multipleSelection[i].price * this.multipleSelection[i].num
+                        this.summary += this.tableData[i].price * this.tableData[i].num
+                        // this.summary += this.multipleSelection[i].price * this.multipleSelection[i].num
                     }
                 }
             }
@@ -302,7 +305,8 @@ export default {
                 for(var j in this.multipleSelection){
                     if(this.multipleSelection[j].id === this.tableData[i].id){
                         this.multipleSelection[j].num = this.tableData[i].num
-                        this.summary += this.multipleSelection[i].price * this.multipleSelection[i].num
+                        this.summary += this.tableData[i].price * this.tableData[i].num
+                        // this.summary += this.multipleSelection[i].price * this.multipleSelection[i].num
                     }
                 }
             }
@@ -445,6 +449,10 @@ export default {
 .shop{
     padding-top: 160px;
     box-sizing: border-box;
+}
+.shop-container{
+    width: 1445px;
+    margin: 0 auto;
 }
 .shop-table{
     box-sizing: border-box;
@@ -592,6 +600,11 @@ export default {
     width: 566px;
     margin-left: 10px;
     margin-top: 40px;
+}
+.login-foot{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 </style>
 

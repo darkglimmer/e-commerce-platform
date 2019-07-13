@@ -69,18 +69,19 @@ export default {
     color: white;
 }
 .header-container{
-    width: 1280px;
+    width: 1442px;
     margin: 0 auto;
 }
 .menu{
     font-weight: bold;
     font-size: 18px;
+    width: 1280px;
+    margin: 0 auto;
 }
 .header-login{
     cursor: pointer;
-    float: right;
-    margin-right: 30px;
     color: white;
+    margin-left: 200px;
 }
 </style>
 <style>
